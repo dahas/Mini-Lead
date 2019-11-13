@@ -1,0 +1,23 @@
+<div class="control">
+    <div class="label">Volume</div>
+    <jqxKnob (onChange)="changeVolume($event)" [value]="volume" [min]="0" [max]="100" [step]="'1'" [startAngle]="120"
+        [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="80" [height]="80" [marks]="marks"
+        [labels]="labels" [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120"
+        [dragEndAngle]="420">
+    </jqxKnob>
+</div>
+
+<div class="control">
+    <div class="label">Panning</div>
+    <jqxKnob (onChange)="changePanning($event)" [value]="panning" [min]="-50" [max]="50" [step]="'1'" [startAngle]="120"
+        [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="80" [height]="80" [labels]="labels"
+        [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120" [dragEndAngle]="420">
+    </jqxKnob>
+</div>
+
+<div class="control">
+    <div class="label">Mode</div>
+    <div class="body">
+        <jqxSwitchButton [checked]="poly" (onChange)="changeMode($event)" [width]="80" [height]="20" [onLabel]="'Poly'" [offLabel]="'Mono'"></jqxSwitchButton>
+    </div>
+</div>

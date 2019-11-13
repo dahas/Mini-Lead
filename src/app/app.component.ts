@@ -6,5 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'synthesizer';
+
+    keyOn(key: object) {
+        // console.log('keyOn', key);
+    }
+
+    keyOff(key: object) {
+        // console.log('keyOff', key);
+    }
+
+    volume(v: number) {
+        // console.log('volume', v);
+    }
+
+    panning(p: number) {
+        // console.log('panning', p);
+    }
+
+    poly(p: boolean) {
+        // console.log('poly', p);
+    }
 }

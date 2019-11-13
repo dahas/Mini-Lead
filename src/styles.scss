@@ -1,1 +1,87 @@
-/* You can add global styles to this file, and also import other style files */
+$space: 8px;
+$distance: 1px;
+$radius: 5px;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.shadow {
+  -webkit-box-shadow: $distance $distance 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: $distance $distance 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: $distance $distance 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.round-corners {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+.synth {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  background: #555;
+  //   border: 4px solid rgb(212, 26, 26);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 $space $space $space;
+}
+
+.master {
+  align-items: center;
+  display: flex;
+  background: #333;
+  height: 120px;
+  margin-top: $space;
+  padding-left: 20px;
+}
+
+.oscillators {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .osc {
+    width: 25%;
+    margin: $space 0 0 $space;
+    background: #333;
+  }
+  .osc:first-child {
+    margin-left: 0;
+  }
+}
+
+.keyboard {
+  background: #333;
+  margin-top: $space;
+  overflow: auto;
+}
+
+.jqx-switchbutton-label {
+  font-size: 12px !important;
+  font-family: Sans-Serif !important;
+  text-align: center !important;
+  text-transform: none !important;
+  font-weight: normal !important;
+}
+
+.jqx-fill-state-normal {
+  border-color: #13844c !important;
+  background: #17a25d !important;
+}
+
+.jqx-switchbutton {
+  border-radius: 15px !important;
+}
+
+.jqx-switchbutton-thumb {
+  border-radius: 15px;
+}
