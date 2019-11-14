@@ -1,18 +1,26 @@
 <div class="synth">
 
   <div class="master shadow round-corners">
-    <dhMaster [volume]="100" [panning]="0" [poly]="true" (volumeChange)="volume($event)"
+    <dhMaster [volume]="50" [panning]="0" [poly]="true" (volumeChange)="volume($event)"
       (panningChange)="panning($event)" (modeChange)="poly($event)"></dhMaster>
   </div>
 
   <div class="oscillators">
-    <div class="osc shadow round-corners"></div>
-    <div class="osc shadow round-corners"></div>
-    <div class="osc shadow round-corners"></div>
-    <div class="osc shadow round-corners"></div>
+    <div class="osc shadow round-corners">
+      <dhOscillator></dhOscillator>
+    </div>
+    <div class="osc shadow round-corners">
+        <dhOscillator></dhOscillator>
+    </div>
+    <div class="osc shadow round-corners">
+        <dhOscillator></dhOscillator>
+    </div>
+    <div class="osc shadow round-corners">
+        <dhOscillator></dhOscillator>
+    </div>
   </div>
 
   <div class="keyboard shadow round-corners">
-    <dhKeyboard (keyOn)="keyOn($event)" (keyOff)="keyOff($event)"></dhKeyboard>
+    <dhKeyboard [fadeOut]="1" (keyOn)="keyOn($event)" (keyOff)="keyOff($event)"></dhKeyboard>
   </div>
 </div>

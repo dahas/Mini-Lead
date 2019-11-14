@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, ViewChild } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -18,7 +18,7 @@ export class dhMasterComponent {
   @Output() modeChange = new EventEmitter<boolean>();
 
   marks: any = {
-    colorRemaining: '#333',
+    colorRemaining: '#555',
     colorProgress: 'orange',
     offset: '80%',
     thickness: 2,
@@ -49,12 +49,12 @@ export class dhMasterComponent {
     size: '60%', offset: '50%'
   };
   spinner: any = {
-    style: { fill: '#17a25d', stroke: '#17a25d' },
+    style: { fill: '#17a25d', stroke: '#117B46' },
     innerRadius: '65%', // specifies the inner Radius of the dial
     outerRadius: '70%', // specifies the outer Radius of the dial
   };
   dial: any = {
-    style: { fill: '#17a25d', stroke: '#17a25d' },
+    style: { fill: '#17a25d', stroke: '#117B46' },
     innerRadius: '0%', // specifies the inner Radius of the dial
     outerRadius: '50%' // specifies the outer Radius of the dial
   };
