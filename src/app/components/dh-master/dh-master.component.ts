@@ -59,15 +59,15 @@ export class dhMasterComponent {
     outerRadius: '50%' // specifies the outer Radius of the dial
   };
 
-  changeVolume(event) {
-    this.volumeChange.emit(event.args.value);
+  changeVolume(e: any): void {
+    this.volumeChange.emit(parseFloat(e.args.value) / 100);
   }
 
-  changePanning(event) {
-    this.panningChange.emit(event.args.value);
+  changePanning(e: any): void {
+    this.panningChange.emit(parseFloat(e.args.value) / 100);
   }
 
-  changeMode(event) {
-    this.modeChange.emit(event.args.checked);
+  changeMode(e: any): void {
+    this.modeChange.emit(e.args.checked);
   }
 }

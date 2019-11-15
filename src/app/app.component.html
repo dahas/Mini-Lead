@@ -1,22 +1,30 @@
 <div class="synth">
 
   <div class="master shadow round-corners">
-    <dhMaster [volume]="50" [panning]="0" [poly]="true" (volumeChange)="volume($event)"
-      (panningChange)="panning($event)" (modeChange)="poly($event)"></dhMaster>
+    <dhMaster [volume]="50" [panning]="0" [poly]="true" (volumeChange)="masterVolume($event)"
+      (panningChange)="masterPan($event)" (modeChange)="masterPolyMode($event)"></dhMaster>
   </div>
 
   <div class="oscillators">
     <div class="osc shadow round-corners">
-      <dhOscillator></dhOscillator>
+      <dhOscillator (waveChange)="osc1Wave($event)" (gainChange)="osc1Gain($event)" (panChange)="osc1Pan($event)"
+        (tuneChange)="osc1Tune($event)" (attackChange)="osc1Attack($event)" (decayChange)="osc1Decay($event)"
+        (sustainChange)="osc1Sustain($event)" (releaseChange)="osc1Release($event)"></dhOscillator>
     </div>
     <div class="osc shadow round-corners">
-        <dhOscillator></dhOscillator>
+      <dhOscillator (waveChange)="osc2Wave($event)" (gainChange)="osc2Gain($event)" (panChange)="osc2Pan($event)"
+        (tuneChange)="osc2Tune($event)" (attackChange)="osc2Attack($event)" (decayChange)="osc2Decay($event)"
+        (sustainChange)="osc2Sustain($event)" (releaseChange)="osc2Release($event)"></dhOscillator>
     </div>
     <div class="osc shadow round-corners">
-        <dhOscillator></dhOscillator>
+      <dhOscillator (waveChange)="osc3Wave($event)" (gainChange)="osc3Gain($event)" (panChange)="osc3Pan($event)"
+        (tuneChange)="osc3Tune($event)" (attackChange)="osc3Attack($event)" (decayChange)="osc3Decay($event)"
+        (sustainChange)="osc3Sustain($event)" (releaseChange)="osc3Release($event)"></dhOscillator>
     </div>
     <div class="osc shadow round-corners">
-        <dhOscillator></dhOscillator>
+      <dhOscillator (waveChange)="osc4Wave($event)" (gainChange)="osc4Gain($event)" (panChange)="osc4Pan($event)"
+        (tuneChange)="osc4Tune($event)" (attackChange)="osc4Attack($event)" (decayChange)="osc4Decay($event)"
+        (sustainChange)="osc4Sustain($event)" (releaseChange)="osc4Release($event)"></dhOscillator>
     </div>
   </div>
 

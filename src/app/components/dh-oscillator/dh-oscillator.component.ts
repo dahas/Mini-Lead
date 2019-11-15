@@ -20,11 +20,16 @@ export class dhOscillatorComponent implements AfterViewInit {
   @Input() panning = 0;
   @Input() detune = 0;
 
-  @Output() volumeChange = new EventEmitter<number>();
-  @Output() panningChange = new EventEmitter<number>();
-  @Output() modeChange = new EventEmitter<boolean>();
+  @Output() waveChange = new EventEmitter<string>();
+  @Output() gainChange = new EventEmitter<number>();
+  @Output() panChange = new EventEmitter<number>();
+  @Output() tuneChange = new EventEmitter<number>();
+  @Output() attackChange = new EventEmitter<number>();
+  @Output() decayChange = new EventEmitter<number>();
+  @Output() sustainChange = new EventEmitter<number>();
+  @Output() releaseChange = new EventEmitter<number>();
 
-  private waveforms = ['Sin', 'Saw', 'Sqr', 'Tri'];
+  private waveforms = ['sine', 'sawtooth', 'square', 'triangle'];
 
   marksWave: any = {
     colorRemaining: 'orange',
@@ -72,11 +77,43 @@ export class dhOscillatorComponent implements AfterViewInit {
     outerRadius: '50%' // specifies the outer Radius of the dial
   };
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.sliderAttack.host[0].attributes.style.nodeValue = 'width: 40px; height: 120px; min-width: 0;';
     this.sliderDecay.host[0].attributes.style.nodeValue = 'width: 40px; height: 120px; min-width: 0;';
     this.sliderSustain.host[0].attributes.style.nodeValue = 'width: 40px; height: 120px; min-width: 0;';
     this.sliderRelease.host[0].attributes.style.nodeValue = 'width: 40px; height: 120px; min-width: 0;';
+  }
+
+  changeWave(e: any): void {
+    this.waveChange.emit(this.waveforms[e.args.value]);
+  }
+
+  changeGain(e: any): void {
+    this.gainChange.emit(parseFloat(e.args.value) / 100);
+  }
+
+  changePan(e: any): void {
+    this.panChange.emit(parseFloat(e.args.value) / 100);
+  }
+
+  changeTune(e: any): void {
+    this.tuneChange.emit(e.args.value);
+  }
+
+  changeAttack(e: any): void {
+    this.attackChange.emit(parseFloat(e.args.value) / 100);
+  }
+
+  changeDecay(e: any): void {
+    this.decayChange.emit(parseFloat(e.args.value) / 100);
+  }
+
+  changeSustain(e: any): void {
+    this.sustainChange.emit(parseFloat(e.args.value) / 100);
+  }
+
+  changeRelease(e: any): void {
+    this.releaseChange.emit(parseFloat(e.args.value) / 100);
   }
 
 }

@@ -6,15 +6,15 @@
 .dh-range {
   display: flex;
   flex-direction: row;
-  width: 3400px;
-  height: 300px;
+  width: 2280px;
+  height: 200px;
   padding-bottom: 8px;
 }
 
 .dh-key-white {
-  width: 60px;
+  width: 40px;
   background: #fff;
-  margin-right: 6px;
+  margin-right: 4px;
   -webkit-border-bottom-left-radius: 5px;
   -webkit-border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -29,11 +29,11 @@
 
 .dh-key-black {
   position: relative;
-  width: 40px;
+  width: 24px;
   background: #000;
   height: 60%;
-  left: -22px;
-  margin-right: -40px;
+  left: -14px;
+  margin-right: -24px;
   -webkit-border-bottom-left-radius: 5px;
   -webkit-border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
