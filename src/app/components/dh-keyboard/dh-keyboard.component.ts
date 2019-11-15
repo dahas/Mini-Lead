@@ -17,14 +17,6 @@ export class dhKeyboardComponent {
   private keyTouched: boolean;
   private keyFadingOut: boolean;
 
-  emitKeyOn(hz: number) {
-    this.keyOn.emit(hz);
-  }
-
-  emitKeyOff() {
-    this.keyOff.emit();
-  }
-
   @HostListener('mousedown', ['$event.target'])
   onMouseDown(key) {
     if (key.className.includes('dh-key-')) {
@@ -57,8 +49,12 @@ export class dhKeyboardComponent {
     }
   }
 
-  frequency(keyNo: number): number {
-    return 440 * Math.pow(2, (keyNo - 49) / 12);
+  emitKeyOn(hz: number) {
+    this.keyOn.emit(hz);
+  }
+
+  emitKeyOff() {
+    this.keyOff.emit();
   }
 
   fadeOutTouchedKey(key) {
@@ -67,5 +63,13 @@ export class dhKeyboardComponent {
     const fadeTo = key.className.includes('dh-key-white') ? 'fade2white' : 'fade2black';
     key.style.animation = `${fadeTo} ${this.fadeOut}s`;
     this.keyTouched = false;
+  }
+
+  /**
+   * Calculate the frequency in Hz of the given key number.
+   * @param keyNo Integer
+   */
+  frequency(keyNo: number): number {
+    return 440 * Math.pow(2, (keyNo - 49) / 12);
   }
 }
