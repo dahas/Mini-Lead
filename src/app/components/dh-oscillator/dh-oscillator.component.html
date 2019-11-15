@@ -40,8 +40,8 @@
         <div class="control adsr">
             <div class="label">A</div>
             <jqxSlider #sliderAttack (onChange)="changeAttack($event)" [showButtons]="false" [showMinorTicks]="false"
-                [minorTicksFrequency]="5" [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="100"
-                [ticksFrequency]="10" [value]="0" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
+                [minorTicksFrequency]="5" [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="250"
+                [ticksFrequency]="25" [value]="0" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
             </jqxSlider>
         </div>
     </div>
@@ -67,8 +67,8 @@
         <div class="control adsr">
             <div class="label">R</div>
             <jqxSlider #sliderRelease (onChange)="changeRelease($event)" [showButtons]="false" [showMinorTicks]="false"
-                [minorTicksFrequency]="50" [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="1000"
-                [ticksFrequency]="100" [value]="0" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
+                [minorTicksFrequency]="50" [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="250"
+                [ticksFrequency]="25" [value]="0" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
             </jqxSlider>
         </div>
     </div>

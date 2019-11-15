@@ -25,7 +25,6 @@ export class AppComponent extends AudioComponent {
     }
 
     keyOn(hz: number): void {
-        console.log('ON');
         const t = this.audioCtx.currentTime;
 
         if (!this.valPoly && this.osc1) {
@@ -52,9 +51,7 @@ export class AppComponent extends AudioComponent {
     }
 
     keyOff(): void {
-        console.log('OFF');
         if (this.gainOsc1) {
-            this.gainOsc1.gain.setTargetAtTime(0, this.audioCtx.currentTime, this.valOsc1Release);
             const t = this. audioCtx.currentTime;
             const g = this.gainOsc1.gain.value; // important: store gain before cancelScheduledValues
 
