@@ -28,6 +28,10 @@ export class AppComponent extends AudioComponent {
         console.log('ON');
         const t = this.audioCtx.currentTime;
 
+        if (!this.valPoly && this.osc1) {
+            this.osc1.stop();
+          }
+
         this.panOsc1 = this.audioCtx.createStereoPanner();
         this.panOsc1.connect(this.gainMaster);
         this.panOsc1.pan.value = this.valOsc1Pan;
