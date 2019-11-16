@@ -5,6 +5,9 @@ export class AudioComponent implements OnInit {
 
   protected audioCtx: any;
 
+  protected fadeOut: number;
+  private waveforms = ['sine', 'sawtooth', 'square', 'triangle'];
+
   protected panMaster: any;
   protected gainMaster: any;
 
@@ -16,27 +19,53 @@ export class AudioComponent implements OnInit {
   protected panOsc1: any;
   protected osc1: any;
 
-  protected valOsc1Wave = 'sawtooth';
+  protected valOsc1Wave = 1;
   protected valOsc1Gain = 1;
-  protected valOsc1Pan = 0;
-  protected valOsc1Tune = 0;
+  protected valOsc1Pan = -1;
+  protected valOsc1Tune = -5;
   protected valOsc1Attack = 0;
   protected valOsc1Decay = 0;
   protected valOsc1Sustain = 1;
-  protected valOsc1Release = 0;
+  protected valOsc1Release = 0.4;
 
   protected gainOsc2: any;
   protected panOsc2: any;
   protected osc2: any;
 
-  protected valOsc2Wave = 'sawtooth';
-  protected valOsc2Gain = 0;
-  protected valOsc2Pan = 0;
-  protected valOsc2Tune = 0;
+  protected valOsc2Wave = 1;
+  protected valOsc2Gain = 1;
+  protected valOsc2Pan = 1;
+  protected valOsc2Tune = 5;
   protected valOsc2Attack = 0;
   protected valOsc2Decay = 0;
   protected valOsc2Sustain = 1;
-  protected valOsc2Release = 0;
+  protected valOsc2Release = 0.4;
+
+  protected gainOsc3: any;
+  protected panOsc3: any;
+  protected osc3: any;
+
+  protected valOsc3Wave = 0;
+  protected valOsc3Gain = 0;
+  protected valOsc3Pan = 0;
+  protected valOsc3Tune = 0;
+  protected valOsc3Attack = 0;
+  protected valOsc3Decay = 0;
+  protected valOsc3Sustain = 0;
+  protected valOsc3Release = 0;
+
+  protected gainOsc4: any;
+  protected panOsc4: any;
+  protected osc4: any;
+
+  protected valOsc4Wave = 0;
+  protected valOsc4Gain = 0;
+  protected valOsc4Pan = 0;
+  protected valOsc4Tune = 0;
+  protected valOsc4Attack = 0;
+  protected valOsc4Decay = 0;
+  protected valOsc4Sustain = 0;
+  protected valOsc4Release = 0;
 
   constructor() {
     this.audioCtx = new AudioContext();
@@ -51,6 +80,8 @@ export class AudioComponent implements OnInit {
     this.gainMaster = this.audioCtx.createGain();
     this.gainMaster.connect(this.panMaster);
     this.gainMaster.gain.setValueAtTime(this.valVolume, t);
+
+    this.setFadeOut();
   }
 
   createOscPan(val: number): any {
@@ -68,9 +99,9 @@ export class AudioComponent implements OnInit {
     return oscGain;
   }
 
-  createOscillator(t: number, wv: string, hz: number, ct: number) {
+  createOscillator(t: number, wv: number, hz: number, ct: number) {
     const osc = this.audioCtx.createOscillator();
-    osc.type = wv;
+    osc.type = this.waveforms[wv];
     osc.detune.setValueAtTime(ct, t);
     osc.frequency.setValueAtTime(hz, t);
     return osc;
@@ -83,4 +114,9 @@ export class AudioComponent implements OnInit {
     gn.gain.setTargetAtTime(0, t, rl);
   }
 
+  setFadeOut() {
+    const relArr = [this.valOsc1Release, this.valOsc2Release, this.valOsc3Release, this.valOsc4Release];
+    const average = relArr.reduce((prev, curr) => prev + curr, 0) / relArr.length;
+    this.fadeOut = average * 10;
+  }
 }

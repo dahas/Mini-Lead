@@ -1,28 +1,36 @@
 <div class="synth">
 
   <div class="master shadow round-corners">
-    <dhMaster [volume]="0.5" [panning]="0" [poly]="true" (volumeChange)="masterVolume($event)"
+    <dhMaster [volume]="valVolume" [panning]="valPanning" [poly]="valPoly" (volumeChange)="masterVolume($event)"
       (panningChange)="masterPan($event)" (modeChange)="masterPolyMode($event)"></dhMaster>
   </div>
 
   <div class="oscillators">
     <div class="osc shadow round-corners">
-      <dhOscillator (waveChange)="osc1Wave($event)" (gainChange)="osc1Gain($event)" (panChange)="osc1Pan($event)"
+      <dhOscillator [wave]="valOsc1Wave" [gain]="valOsc1Gain" [pan]="valOsc1Pan" [tune]="valOsc1Tune"
+      [attack]="valOsc1Attack" [decay]="valOsc1Decay" [sustain]="valOsc1Sustain" [release]="valOsc1Release" 
+      (waveChange)="osc1Wave($event)" (gainChange)="osc1Gain($event)" (panChange)="osc1Pan($event)"
         (tuneChange)="osc1Tune($event)" (attackChange)="osc1Attack($event)" (decayChange)="osc1Decay($event)"
         (sustainChange)="osc1Sustain($event)" (releaseChange)="osc1Release($event)"></dhOscillator>
     </div>
     <div class="osc shadow round-corners">
-      <dhOscillator (waveChange)="osc2Wave($event)" (gainChange)="osc2Gain($event)" (panChange)="osc2Pan($event)"
+      <dhOscillator [wave]="valOsc2Wave" [gain]="valOsc2Gain" [pan]="valOsc2Pan" [tune]="valOsc2Tune" 
+      [attack]="valOsc2Attack" [decay]="valOsc2Decay" [sustain]="valOsc2Sustain" [release]="valOsc2Release" 
+      (waveChange)="osc2Wave($event)" (gainChange)="osc2Gain($event)" (panChange)="osc2Pan($event)"
         (tuneChange)="osc2Tune($event)" (attackChange)="osc2Attack($event)" (decayChange)="osc2Decay($event)"
         (sustainChange)="osc2Sustain($event)" (releaseChange)="osc2Release($event)"></dhOscillator>
     </div>
     <div class="osc shadow round-corners">
-      <dhOscillator (waveChange)="osc3Wave($event)" (gainChange)="osc3Gain($event)" (panChange)="osc3Pan($event)"
+      <dhOscillator [wave]="valOsc3Wave" [gain]="valOsc3Gain" [pan]="valOsc3Pan" [tune]="valOsc3Tune" 
+      [attack]="valOsc3Attack" [decay]="valOsc3Decay" [sustain]="valOsc3Sustain" [release]="valOsc3Release" 
+      (waveChange)="osc3Wave($event)" (gainChange)="osc3Gain($event)" (panChange)="osc3Pan($event)"
         (tuneChange)="osc3Tune($event)" (attackChange)="osc3Attack($event)" (decayChange)="osc3Decay($event)"
         (sustainChange)="osc3Sustain($event)" (releaseChange)="osc3Release($event)"></dhOscillator>
     </div>
     <div class="osc shadow round-corners">
-      <dhOscillator (waveChange)="osc4Wave($event)" (gainChange)="osc4Gain($event)" (panChange)="osc4Pan($event)"
+      <dhOscillator [wave]="valOsc4Wave" [gain]="valOsc4Gain" [pan]="valOsc4Pan" [tune]="valOsc4Tune" 
+      [attack]="valOsc4Attack" [decay]="valOsc4Decay" [sustain]="valOsc4Sustain" [release]="valOsc4Release" 
+      (waveChange)="osc4Wave($event)" (gainChange)="osc4Gain($event)" (panChange)="osc4Pan($event)"
         (tuneChange)="osc4Tune($event)" (attackChange)="osc4Attack($event)" (decayChange)="osc4Decay($event)"
         (sustainChange)="osc4Sustain($event)" (releaseChange)="osc4Release($event)"></dhOscillator>
     </div>

@@ -15,12 +15,16 @@ export class dhOscillatorComponent implements AfterViewInit {
   @ViewChild('sliderSustain', null) sliderSustain: jqxSliderComponent;
   @ViewChild('sliderRelease', null) sliderRelease: jqxSliderComponent;
 
-  @Input() waveform = 1;
-  @Input() gain = 100;
-  @Input() panning = 0;
-  @Input() detune = 0;
+  @Input() wave = 1;
+  @Input() gain = 0;
+  @Input() pan = 0;
+  @Input() tune = 0;
+  @Input() attack = 0;
+  @Input() decay = 0;
+  @Input() sustain = 1;
+  @Input() release = 0;
 
-  @Output() waveChange = new EventEmitter<string>();
+  @Output() waveChange = new EventEmitter<number>();
   @Output() gainChange = new EventEmitter<number>();
   @Output() panChange = new EventEmitter<number>();
   @Output() tuneChange = new EventEmitter<number>();
@@ -28,8 +32,6 @@ export class dhOscillatorComponent implements AfterViewInit {
   @Output() decayChange = new EventEmitter<number>();
   @Output() sustainChange = new EventEmitter<number>();
   @Output() releaseChange = new EventEmitter<number>();
-
-  private waveforms = ['sine', 'sawtooth', 'square', 'triangle'];
 
   marksWave: any = {
     colorRemaining: 'orange',
@@ -41,14 +43,6 @@ export class dhOscillatorComponent implements AfterViewInit {
     majorInterval: 0,
     minorInterval: 1
   };
-  labelsWave: any = {
-    offset: '100%',
-    step: 1,
-    visible: false,
-    formatFunction: (label: number): string => {
-      return this.waveforms[label];
-    }
-  };
 
   marksGain: any = {
     colorRemaining: '#555',
@@ -57,8 +51,8 @@ export class dhOscillatorComponent implements AfterViewInit {
     thickness: 2,
     size: '6%',
     majorSize: '16%',
-    majorInterval: 100,
-    minorInterval: 2
+    majorInterval: 1,
+    minorInterval: 0.02
   };
 
   pointer: any = {
@@ -82,18 +76,22 @@ export class dhOscillatorComponent implements AfterViewInit {
     this.sliderDecay.host[0].attributes.style.nodeValue = 'width: 40px; height: 120px; min-width: 0;';
     this.sliderSustain.host[0].attributes.style.nodeValue = 'width: 40px; height: 120px; min-width: 0;';
     this.sliderRelease.host[0].attributes.style.nodeValue = 'width: 40px; height: 120px; min-width: 0;';
+    this.sliderAttack.setValue(this.attack * 100);
+    this.sliderDecay.setValue(this.decay * 100);
+    this.sliderSustain.setValue(this.sustain * 100);
+    this.sliderRelease.setValue(this.release * 100);
   }
 
   changeWave(e: any): void {
-    this.waveChange.emit(this.waveforms[e.args.value]);
+    this.waveChange.emit(e.args.value);
   }
 
   changeGain(e: any): void {
-    this.gainChange.emit(parseFloat(e.args.value) / 100);
+    this.gainChange.emit(parseFloat(e.args.value));
   }
 
   changePan(e: any): void {
-    this.panChange.emit(parseFloat(e.args.value) / 100);
+    this.panChange.emit(parseFloat(e.args.value));
   }
 
   changeTune(e: any): void {

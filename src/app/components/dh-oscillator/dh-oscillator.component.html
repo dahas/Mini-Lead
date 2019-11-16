@@ -2,7 +2,7 @@
   <div class="controls">
     <div class="control">
       <div class="label">Wave</div>
-      <jqxKnob (onChange)="changeWave($event)" [value]="waveform" [min]="0" [max]="3" [step]="1" [startAngle]="120"
+      <jqxKnob (onChange)="changeWave($event)" [value]="wave" [min]="0" [max]="3" [step]="1" [startAngle]="120"
         [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40" [marks]="marksWave"
         [labels]="labelsWave" [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="180"
         [dragEndAngle]="360">
@@ -10,7 +10,7 @@
     </div>
     <div class="control">
       <div class="label">Gain</div>
-      <jqxKnob (onChange)="changeGain($event)" [value]="gain" [min]="0" [max]="100" [step]="1" [startAngle]="120"
+      <jqxKnob (onChange)="changeGain($event)" [value]="gain" [min]="0" [max]="1" [step]="0.01" [startAngle]="120"
         [endAngle]="480" [snapToStep]="false" [rotation]="'clockwise'" [width]="40" [height]="40" [marks]="marksGain"
         [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120" [dragEndAngle]="420">
       </jqxKnob>
@@ -19,14 +19,14 @@
   <div class="controls">
     <div class="control">
       <div class="label">Pan</div>
-      <jqxKnob (onChange)="changePan($event)" [value]="panning" [min]="-100" [max]="100" [step]="10" [startAngle]="120"
+      <jqxKnob (onChange)="changePan($event)" [value]="pan" [min]="-1" [max]="1" [step]="0.1" [startAngle]="120"
         [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40" [pointer]="pointer"
         [spinner]="spinner" [dial]="dial" [dragStartAngle]="120" [dragEndAngle]="420">
       </jqxKnob>
     </div>
     <div class="control">
       <div class="label">Tune</div>
-      <jqxKnob (onChange)="changeTune($event)" [value]="detune" [min]="-100" [max]="100" [step]="1" [startAngle]="120"
+      <jqxKnob (onChange)="changeTune($event)" [value]="tune" [min]="-100" [max]="100" [step]="1" [startAngle]="120"
         [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40" [pointer]="pointer"
         [spinner]="spinner" [dial]="dial" [dragStartAngle]="120" [dragEndAngle]="420">
       </jqxKnob>
@@ -36,36 +36,36 @@
   <div class="controls">
     <div class="control adsr">
       <div class="label">A</div>
-      <jqxSlider #sliderAttack (onChange)="changeAttack($event)" [showButtons]="false" [showMinorTicks]="false"
-        [minorTicksFrequency]="5" [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="250"
-        [ticksFrequency]="25" [value]="0" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
+      <jqxSlider #sliderAttack (onChange)="changeAttack($event)" [showButtons]="false" 
+      [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="250"
+        [ticksFrequency]="25" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
       </jqxSlider>
     </div>
   </div>
   <div class="controls">
     <div class="control adsr">
       <div class="label">D</div>
-      <jqxSlider #sliderDecay (onChange)="changeDecay($event)" [showButtons]="false" [showMinorTicks]="false"
-        [minorTicksFrequency]="5" [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="100"
-        [ticksFrequency]="10" [value]="0" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
+      <jqxSlider #sliderDecay (onChange)="changeDecay($event)" [showButtons]="false" 
+      [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="100"
+        [ticksFrequency]="10" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
       </jqxSlider>
     </div>
   </div>
   <div class="controls">
     <div class="control adsr">
       <div class="label">S</div>
-      <jqxSlider #sliderSustain (onChange)="changeSustain($event)" [showButtons]="false" [showMinorTicks]="false"
-        [minorTicksFrequency]="5" [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="100"
-        [ticksFrequency]="10" [value]="100" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
+      <jqxSlider #sliderSustain (onChange)="changeSustain($event)" [showButtons]="false" 
+      [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="100"
+        [ticksFrequency]="10" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
       </jqxSlider>
     </div>
   </div>
   <div class="controls">
     <div class="control adsr">
       <div class="label">R</div>
-      <jqxSlider #sliderRelease (onChange)="changeRelease($event)" [showButtons]="false" [showMinorTicks]="false"
-        [minorTicksFrequency]="50" [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="250"
-        [ticksFrequency]="25" [value]="0" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
+      <jqxSlider #sliderRelease (onChange)="changeRelease($event)" [showButtons]="false" 
+      [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="250"
+        [ticksFrequency]="25" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
       </jqxSlider>
     </div>
   </div>
