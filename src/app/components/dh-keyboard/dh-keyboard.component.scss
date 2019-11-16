@@ -14,23 +14,37 @@
 .dh-key-white {
   width: 40px;
   background: #fff;
+  color: #aaa;
+  display: flex;
+  flex-direction: column;
+  position: relative;
   margin-right: 4px;
   -webkit-border-bottom-left-radius: 5px;
   -webkit-border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  overflow: auto;
 }
 .dh-key-white:last-child {
   margin-right: 0;
 }
-// .dh-key-white.touched {
-//   background: #89d0ff;
-// }
+.dh-key-white > div {
+  text-align: center;
+  position: absolute;
+  flex: 1;
+  bottom: 7px;
+  left: 16px;
+}
 
 .dh-key-black {
+  z-index: 100;
   position: relative;
   width: 24px;
   background: #000;
+  color: #777;
+  display: flex;
+  flex-direction: column;
+  position: relative;
   height: 60%;
   left: -14px;
   margin-right: -24px;
@@ -39,9 +53,14 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-// .dh-key-black.touched {
-//   background: #065a92;
-// }
+.dh-key-black > div {
+  text-align: center;
+  position: absolute;
+  flex: 1;
+  bottom: 7px;
+  left: 6px;
+}
+
 
 @keyframes fade2white {
   from {

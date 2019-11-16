@@ -12,15 +12,15 @@ export class AppComponent extends AudioComponent {
     super();
   }
 
-  masterVolume(v: number): void {
+  setMasterVolume(v: number): void {
     this.gainMaster.gain.setValueAtTime(v, this.audioCtx.currentTime);
   }
 
-  masterPan(p: number): void {
+  setMasterPan(p: number): void {
     this.panMaster.pan.value = p;
   }
 
-  masterPolyMode(p: boolean): void {
+  setMasterPolyMode(p: boolean): void {
     this.valPoly = p;
   }
 
@@ -96,103 +96,103 @@ export class AppComponent extends AudioComponent {
     }
   }
 
-  osc1Wave(waveform: number): void {
+  setOsc1Wave(waveform: number): void {
     this.valOsc1Wave = waveform;
   }
-  osc1Gain(gain: number): void {
+  setOsc1Gain(gain: number): void {
     this.valOsc1Gain = gain;
   }
-  osc1Pan(pan: number): void {
+  setOsc1Pan(pan: number): void {
     this.valOsc1Pan = pan;
   }
-  osc1Tune(tune: number): void {
+  setOsc1Tune(tune: number): void {
     this.valOsc1Tune = tune;
   }
-  osc1Attack(attack: number): void {
+  setOsc1Attack(attack: number): void {
     this.valOsc1Attack = attack;
   }
-  osc1Decay(decay: number): void {
+  setOsc1Decay(decay: number): void {
     this.valOsc1Decay = decay;
   }
-  osc1Sustain(sustain: number): void {
+  setOsc1Sustain(sustain: number): void {
     this.valOsc1Sustain = sustain;
   }
-  osc1Release(release: number): void {
+  setOsc1Release(release: number): void {
     this.valOsc1Release = release;
   }
 
-  osc2Wave(waveform: number): void {
+  setOsc2Wave(waveform: number): void {
     this.valOsc2Wave = waveform;
   }
-  osc2Gain(gain: number): void {
+  setOsc2Gain(gain: number): void {
     this.valOsc2Gain = gain;
   }
-  osc2Pan(pan: number): void {
+  setOsc2Pan(pan: number): void {
     this.valOsc2Pan = pan;
   }
-  osc2Tune(tune: number): void {
+  setOsc2Tune(tune: number): void {
     this.valOsc2Tune = tune;
   }
-  osc2Attack(attack: number): void {
+  setOsc2Attack(attack: number): void {
     this.valOsc2Attack = attack;
   }
-  osc2Decay(decay: number): void {
+  setOsc2Decay(decay: number): void {
     this.valOsc2Decay = decay;
   }
-  osc2Sustain(sustain: number): void {
+  setOsc2Sustain(sustain: number): void {
     this.valOsc2Sustain = sustain;
   }
-  osc2Release(release: number): void {
+  setOsc2Release(release: number): void {
     this.valOsc2Release = release;
   }
 
-  osc3Wave(waveform: number): void {
+  setOsc3Wave(waveform: number): void {
     this.valOsc3Wave = waveform;
   }
-  osc3Gain(gain: number): void {
+  setOsc3Gain(gain: number): void {
     this.valOsc3Gain = gain;
   }
-  osc3Pan(pan: number): void {
+  setOsc3Pan(pan: number): void {
     this.valOsc3Pan = pan;
   }
-  osc3Tune(tune: number): void {
+  setOsc3Tune(tune: number): void {
     this.valOsc3Tune = tune;
   }
-  osc3Attack(attack: number): void {
+  setOsc3Attack(attack: number): void {
     this.valOsc3Attack = attack;
   }
-  osc3Decay(decay: number): void {
+  setOsc3Decay(decay: number): void {
     this.valOsc3Decay = decay;
   }
-  osc3Sustain(sustain: number): void {
+  setOsc3Sustain(sustain: number): void {
     this.valOsc3Sustain = sustain;
   }
-  osc3Release(release: number): void {
+  setOsc3Release(release: number): void {
     this.valOsc3Release = release;
   }
 
-  osc4Wave(waveform: number): void {
+  setOsc4Wave(waveform: number): void {
     this.valOsc4Wave = waveform;
   }
-  osc4Gain(gain: number): void {
+  setOsc4Gain(gain: number): void {
     this.valOsc4Gain = gain;
   }
-  osc4Pan(pan: number): void {
+  setOsc4Pan(pan: number): void {
     this.valOsc4Pan = pan;
   }
-  osc4Tune(tune: number): void {
+  setOsc4Tune(tune: number): void {
     this.valOsc4Tune = tune;
   }
-  osc4Attack(attack: number): void {
+  setOsc4Attack(attack: number): void {
     this.valOsc4Attack = attack;
   }
-  osc4Decay(decay: number): void {
+  setOsc4Decay(decay: number): void {
     this.valOsc4Decay = decay;
   }
-  osc4Sustain(sustain: number): void {
+  setOsc4Sustain(sustain: number): void {
     this.valOsc4Sustain = sustain;
   }
-  osc4Release(release: number): void {
+  setOsc4Release(release: number): void {
     this.valOsc4Release = release;
   }
 }

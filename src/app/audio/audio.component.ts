@@ -11,7 +11,7 @@ export class AudioComponent implements OnInit {
   protected panMaster: any;
   protected gainMaster: any;
 
-  protected valVolume = 0.5;
+  protected valVolume = 0.1;
   protected valPanning = 0;
   protected valPoly = true;
 
