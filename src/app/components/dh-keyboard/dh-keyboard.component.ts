@@ -18,9 +18,9 @@ export class dhKeyboardComponent {
   private keyFadingOut: boolean;
 
   @HostListener('mousedown', ['$event.target'])
-  onMouseDown(key) {
+  onMouseDown(key: any): void {
     if (key.className.includes('dh-key-')) {
-      this.emitKeyOn(this.frequency(key.dataset.key));
+      this.keyOn.emit(this.frequency(key.dataset.key));
       const bgColor = key.className.includes('dh-key-white') ? '#89d0ff' : '#065a92';
       key.style.backgroundColor = bgColor;
       key.style.animation = '';
@@ -30,9 +30,9 @@ export class dhKeyboardComponent {
   }
 
   @HostListener('mouseup', ['$event.target'])
-  onMouseUp(key) {
+  onMouseUp(key: any): void {
     if (key.className.includes('dh-key-')) {
-      this.emitKeyOff();
+      this.keyOff.emit();
       this.fadeOutTouchedKey(key);
       this.keyTouched = false;
       this.keyFadingOut = true;
@@ -40,24 +40,16 @@ export class dhKeyboardComponent {
   }
 
   @HostListener('mouseout', ['$event.target'])
-  onMouseOut(key) {
+  onMouseOut(key: any): void {
     if (key.className.includes('dh-key-')) {
-      this.emitKeyOff();
+      this.keyOff.emit();
       if (this.keyTouched && !this.keyFadingOut) {
         this.fadeOutTouchedKey(key);
       }
     }
   }
 
-  emitKeyOn(hz: number) {
-    this.keyOn.emit(hz);
-  }
-
-  emitKeyOff() {
-    this.keyOff.emit();
-  }
-
-  fadeOutTouchedKey(key) {
+  fadeOutTouchedKey(key: any): void {
     const bgColor = key.className.includes('dh-key-white') ? '#fff' : '#000';
     key.style.backgroundColor = bgColor;
     const fadeTo = key.className.includes('dh-key-white') ? 'fade2white' : 'fade2black';

@@ -29,8 +29,8 @@ export class AudioComponent implements OnInit {
   protected panOsc2: any;
   protected osc2: any;
 
-  protected valOsc2Wave = 'square';
-  protected valOsc2Gain = 1;
+  protected valOsc2Wave = 'sawtooth';
+  protected valOsc2Gain = 0;
   protected valOsc2Pan = 0;
   protected valOsc2Tune = 0;
   protected valOsc2Attack = 0;
@@ -51,6 +51,36 @@ export class AudioComponent implements OnInit {
     this.gainMaster = this.audioCtx.createGain();
     this.gainMaster.connect(this.panMaster);
     this.gainMaster.gain.setValueAtTime(this.valVolume, t);
+  }
+
+  createOscPan(val: number): any {
+    const oscPan = this.audioCtx.createStereoPanner();
+    oscPan.pan.value = val;
+    return oscPan;
+  }
+
+  createOscGain(t: number, gn: number, at: number, dc: number, su: number): any {
+    const oscGain = this.audioCtx.createGain();
+    oscGain.gain.setValueAtTime(0, t);
+    oscGain.gain.linearRampToValueAtTime(gn, t + at);
+    const max = su > gn ? gn : su;
+    oscGain.gain.setTargetAtTime(max, t + at, dc);
+    return oscGain;
+  }
+
+  createOscillator(t: number, wv: string, hz: number, ct: number) {
+    const osc = this.audioCtx.createOscillator();
+    osc.type = wv;
+    osc.detune.setValueAtTime(ct, t);
+    osc.frequency.setValueAtTime(hz, t);
+    return osc;
+  }
+
+  createOscRelease(t: number, gn: any, rl: number): void {
+    const oscGain = gn.gain.value; // important: store gain before cancelScheduledValues
+    gn.gain.cancelScheduledValues(t);
+    gn.gain.setValueAtTime(oscGain, t);
+    gn.gain.setTargetAtTime(0, t, rl);
   }
 
 }

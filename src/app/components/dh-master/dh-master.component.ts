@@ -24,8 +24,8 @@ export class dhMasterComponent {
     thickness: 2,
     size: '4%',
     majorSize: '16%',
-    majorInterval: 100,
-    minorInterval: 2
+    majorInterval: 1,
+    minorInterval: 0.02
   };
   labels: any = {
     offset: '94%',
@@ -60,11 +60,11 @@ export class dhMasterComponent {
   };
 
   changeVolume(e: any): void {
-    this.volumeChange.emit(parseFloat(e.args.value) / 100);
+    this.volumeChange.emit(parseFloat(e.args.value));
   }
 
   changePanning(e: any): void {
-    this.panningChange.emit(parseFloat(e.args.value) / 100);
+    this.panningChange.emit(parseFloat(e.args.value));
   }
 
   changeMode(e: any): void {
