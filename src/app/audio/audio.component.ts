@@ -14,13 +14,9 @@ export class AudioComponent implements OnInit {
   protected valPanning = 0;
   protected valPoly = true;
 
-  protected gainOsc1: any;
-  protected panOsc1: any;
-  protected osc1: any;
-
   protected valOsc1Wave = 1;
   protected valOsc1Gain = 1;
-  protected valOsc1Pan = -1;
+  protected valOsc1Pan = 0;
   protected valOsc1Tune = -5;
   protected valOsc1Attack = 0;
   protected valOsc1Decay = 0;

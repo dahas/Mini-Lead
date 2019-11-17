@@ -22,18 +22,23 @@ export class dhKeyboardComponent {
 
   constructor() {
     // PC keyboard mapping:
-    this.keyMap.set(65, 28);
-    this.keyMap.set(87, 29);
-    this.keyMap.set(83, 30);
-    this.keyMap.set(69, 31);
-    this.keyMap.set(68, 32);
-    this.keyMap.set(70, 33);
-    this.keyMap.set(84, 34);
-    this.keyMap.set(71, 35);
-    this.keyMap.set(90, 36);
-    this.keyMap.set(72, 37);
-    this.keyMap.set(85, 38);
-    this.keyMap.set(74, 39);
+    let c = 28;
+    this.keyMap.set(65, c++); // A
+    this.keyMap.set(87, c++); // W
+    this.keyMap.set(83, c++); // S
+    this.keyMap.set(69, c++); // E
+    this.keyMap.set(68, c++); // D
+    this.keyMap.set(70, c++); // F
+    this.keyMap.set(84, c++); // T
+    this.keyMap.set(71, c++); // G
+    this.keyMap.set(90, c++); // Z
+    this.keyMap.set(72, c++); // H
+    this.keyMap.set(85, c++); // U
+    this.keyMap.set(74, c++); // J
+    this.keyMap.set(75, c++); // K
+    this.keyMap.set(79, c++); // O
+    this.keyMap.set(76, c++); // L
+    this.keyMap.set(80, c++); // P
   }
 
   // PC keyboard input:
