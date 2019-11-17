@@ -12,12 +12,13 @@ export class dhKeyboardComponent {
   @Input() fadeOut = 0;
 
   @Output() touch = new EventEmitter<number>();
-  @Output() release = new EventEmitter();
+  @Output() release = new EventEmitter<number>();
 
   private keyTouched: boolean;
   private keyFadingOut: boolean;
 
   private keyMap = new Map();
+  private touchedKeys = [];
 
   constructor() {
     // PC keyboard mapping:
@@ -35,32 +36,33 @@ export class dhKeyboardComponent {
     this.keyMap.set(74, 39);
   }
 
+  // PC keyboard input:
   @HostListener('window:keydown', ['$event'])
   onKeyDown(e: any): void {
     const k = this.keyMap.get(e.keyCode);
-    if (k && !this.keyTouched) {
+    if (k && this.touchedKeys.indexOf(k) < 0) {
+      this.touchedKeys.push(k);
       this.touch.emit(this.frequency(k));
       const key = document.querySelector('[data-key="' + k + '"]') as HTMLElement;
       const bgColor = key.className.includes('dh-key-white') ? '#89d0ff' : '#065a92';
       key.style.backgroundColor = bgColor;
       key.style.animation = '';
-      this.keyTouched = true;
       this.keyFadingOut = false;
     }
   }
-
   @HostListener('window:keyup', ['$event'])
   onKeyUp(e: any): void {
     const k = this.keyMap.get(e.keyCode);
     if (k) {
-      this.release.emit();
+      this.release.emit(this.frequency(k));
       const key = document.querySelector('[data-key="' + k + '"]') as HTMLElement;
       this.fadeOutTouchedKey(key);
-      this.keyTouched = false;
+      this.touchedKeys = this.touchedKeys.filter(v => v !== k);
       this.keyFadingOut = true;
     }
   }
 
+  // PC mouse input:
   @HostListener('mousedown', ['$event.target'])
   onMouseDown(key: any): void {
     if (key.className.includes('dh-key-')) {
@@ -72,26 +74,26 @@ export class dhKeyboardComponent {
       this.keyFadingOut = false;
     }
   }
-
   @HostListener('mouseup', ['$event.target'])
   onMouseUp(key: any): void {
     if (key.className.includes('dh-key-')) {
-      this.release.emit();
+      this.release.emit(this.frequency(key.dataset.key));
       this.fadeOutTouchedKey(key);
       this.keyTouched = false;
       this.keyFadingOut = true;
     }
   }
-
   @HostListener('mouseout', ['$event.target'])
   onMouseOut(key: any): void {
     if (key.className.includes('dh-key-')) {
-      this.release.emit();
+      this.release.emit(this.frequency(key.dataset.key));
       if (this.keyTouched && !this.keyFadingOut) {
         this.fadeOutTouchedKey(key);
       }
     }
   }
+
+  // ----------- Helper: -----------------------------------------
 
   fadeOutTouchedKey(key: any): void {
     const bgColor = key.className.includes('dh-key-white') ? '#fff' : '#000';
@@ -101,10 +103,6 @@ export class dhKeyboardComponent {
     this.keyTouched = false;
   }
 
-  /**
-   * Calculate the frequency in Hz of the given key number.
-   * @param keyNo Integer
-   */
   frequency(keyNo: number): number {
     return 440 * Math.pow(2, (keyNo - 49) / 12);
   }

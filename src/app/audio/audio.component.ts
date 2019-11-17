@@ -6,7 +6,6 @@ export class AudioComponent implements OnInit {
   protected audioCtx: any;
 
   protected fadeOut: number;
-  private waveforms = ['sine', 'sawtooth', 'square', 'triangle'];
 
   protected panMaster: any;
   protected gainMaster: any;
@@ -84,39 +83,74 @@ export class AudioComponent implements OnInit {
     this.setFadeOut();
   }
 
-  createOscPan(val: number): any {
-    const oscPan = this.audioCtx.createStereoPanner();
-    oscPan.pan.value = val;
-    return oscPan;
-  }
-
-  createOscGain(t: number, gn: number, at: number, dc: number, su: number): any {
-    const oscGain = this.audioCtx.createGain();
-    oscGain.gain.setValueAtTime(0, t);
-    oscGain.gain.linearRampToValueAtTime(gn, t + at);
-    const max = su > gn ? gn : su;
-    oscGain.gain.setTargetAtTime(max, t + at, dc);
-    return oscGain;
-  }
-
-  createOscillator(t: number, wv: number, hz: number, ct: number) {
-    const osc = this.audioCtx.createOscillator();
-    osc.type = this.waveforms[wv];
-    osc.detune.setValueAtTime(ct, t);
-    osc.frequency.setValueAtTime(hz, t);
-    return osc;
-  }
-
-  createOscRelease(t: number, gn: any, rl: number): void {
-    const oscGain = gn.gain.value; // important: store gain before cancelScheduledValues
-    gn.gain.cancelScheduledValues(t);
-    gn.gain.setValueAtTime(oscGain, t);
-    gn.gain.setTargetAtTime(0, t, rl);
+  createVco(hz: number) {
+    return new VCO(hz, this.audioCtx, this.gainMaster, this.valOsc1Pan, this.valOsc1Gain, this.valOsc1Wave, this.valOsc1Attack,
+      this.valOsc1Decay, this.valOsc1Release, this.valOsc1Sustain, this.valOsc1Tune);
   }
 
   setFadeOut() {
     const relArr = [this.valOsc1Release, this.valOsc2Release, this.valOsc3Release, this.valOsc4Release];
     const average = relArr.reduce((prev, curr) => prev + curr, 0) / relArr.length;
     this.fadeOut = average * 10;
+  }
+}
+
+class VCO {
+
+  private waveforms = ['sine', 'sawtooth', 'square', 'triangle'];
+
+  private vco: any;
+  private vca: any;
+
+  constructor(protected hz: number, protected audioCtx: any, protected gainMaster: any, protected valPan: number,
+              protected valGain: number, protected valWave: number, protected valAttack: number,
+              protected valDecay: number, protected valRelease: number, protected valSustain: number,
+              protected valTune: number) {}
+
+  start(): void {
+    const t = this.audioCtx.currentTime;
+    const pan = this.createOscPan(this.valPan);
+    pan.connect(this.gainMaster);
+    this.vca = this.createOscGain(t);
+    this.vca.connect(pan);
+    this.vco = this.createOscillator(t);
+    this.vco.connect(this.vca);
+    this.vco.start();
+  }
+
+  stop() {
+    const t = this.audioCtx.currentTime;
+    this.createOscRelease(t);
+    this.vco.stop(t + this.valRelease * 7);
+  }
+
+  createOscPan(val: number): any {
+    const oscPan = this.audioCtx.createStereoPanner();
+    oscPan.pan.value = val;
+    return oscPan;
+  }
+
+  createOscGain(t: number): any {
+    const oscGain = this.audioCtx.createGain();
+    oscGain.gain.setValueAtTime(0, t);
+    oscGain.gain.linearRampToValueAtTime(this.valGain, t + this.valAttack);
+    const max = this.valSustain > this.valGain ? this.valGain : this.valSustain;
+    oscGain.gain.setTargetAtTime(max, t + this.valAttack, this.valDecay);
+    return oscGain;
+  }
+
+  createOscillator(t: number) {
+    const osc = this.audioCtx.createOscillator();
+    osc.type = this.waveforms[this.valWave];
+    osc.detune.setValueAtTime(this.valTune, t);
+    osc.frequency.setValueAtTime(this.hz, t);
+    return osc;
+  }
+
+  createOscRelease(t: number): void {
+    const oscGain = this.vca.gain.value; // important: store gain before cancelScheduledValues
+    this.vca.gain.cancelScheduledValues(t);
+    this.vca.gain.setValueAtTime(oscGain, t);
+    this.vca.gain.setTargetAtTime(0, t, this.valRelease);
   }
 }
