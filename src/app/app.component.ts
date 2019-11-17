@@ -8,7 +8,7 @@ import { AudioComponent } from './audio/audio.component';
 })
 export class AppComponent extends AudioComponent {
 
-  private activeKeys = [];
+  private activeKeys = {};
 
   constructor() {
     super();
@@ -26,20 +26,20 @@ export class AppComponent extends AudioComponent {
     this.valPoly = p;
   }
 
-  keyOn(hz: number): void {
+  keyOn(e: any): void {
     const t = this.audioCtx.currentTime;
 
     if (!this.valPoly) {
-      if (this.osc1) { this.osc1.stop(); }
-      // if (this.osc2) { this.osc2.stop(); }
-      // if (this.osc3) { this.osc3.stop(); }
-      // if (this.osc4) { this.osc4.stop(); }
+      Object.keys(this.activeKeys).forEach(k => {
+        this.activeKeys[k].stop();
+        delete this.activeKeys[k];
+      });
     }
 
     if (this.valOsc1Gain) {
-      const vco = this.createVco(hz);
+      const vco = this.createVco(e.hz);
       vco.start();
-      this.activeKeys[hz] = vco;
+      this.activeKeys[e.note] = vco;
     }
 
     // if (this.valOsc2Gain) {
@@ -73,10 +73,10 @@ export class AppComponent extends AudioComponent {
     // }
   }
 
-  keyOff(hz: number): void {
-    if (this.activeKeys[hz]) {
-      this.activeKeys[hz].stop();
-      delete this.activeKeys[hz];
+  keyOff(e: any): void {
+    if (this.activeKeys[e.note]) {
+      this.activeKeys[e.note].stop();
+      delete this.activeKeys[e.note];
     }
     // if (this.gainOsc2) {
     //   this.createOscRelease(t, this.gainOsc2, this.valOsc2Release);
