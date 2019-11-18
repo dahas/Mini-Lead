@@ -3,64 +3,25 @@ import { Component, OnInit } from '@angular/core';
 @Component({})
 export class AudioComponent implements OnInit {
 
-  protected audioCtx: any;
+  public audioCtx: any;
 
-  protected fadeOut: number;
+  public fadeOut: number;
 
-  protected panMaster: any;
-  protected gainMaster: any;
+  public panMaster: any;
+  public gainMaster: any;
 
-  protected valVolume = 0.1;
-  protected valPanning = 0;
-  protected valPoly = true;
+  public defMasterVolume = 0.1;
+  public defMasterPan = 0;
+  public defMasterPoly = true;
 
-  protected valOsc1Wave = 1;
-  protected valOsc1Gain = 1;
-  protected valOsc1Pan = 0;
-  protected valOsc1Tune = -5;
-  protected valOsc1Attack = 0;
-  protected valOsc1Decay = 0;
-  protected valOsc1Sustain = 1;
-  protected valOsc1Release = 0.4;
-
-  protected gainOsc2: any;
-  protected panOsc2: any;
-  protected osc2: any;
-
-  protected valOsc2Wave = 1;
-  protected valOsc2Gain = 1;
-  protected valOsc2Pan = 1;
-  protected valOsc2Tune = 5;
-  protected valOsc2Attack = 0;
-  protected valOsc2Decay = 0;
-  protected valOsc2Sustain = 1;
-  protected valOsc2Release = 0.4;
-
-  protected gainOsc3: any;
-  protected panOsc3: any;
-  protected osc3: any;
-
-  protected valOsc3Wave = 0;
-  protected valOsc3Gain = 0;
-  protected valOsc3Pan = 0;
-  protected valOsc3Tune = 0;
-  protected valOsc3Attack = 0;
-  protected valOsc3Decay = 0;
-  protected valOsc3Sustain = 0;
-  protected valOsc3Release = 0;
-
-  protected gainOsc4: any;
-  protected panOsc4: any;
-  protected osc4: any;
-
-  protected valOsc4Wave = 0;
-  protected valOsc4Gain = 0;
-  protected valOsc4Pan = 0;
-  protected valOsc4Tune = 0;
-  protected valOsc4Attack = 0;
-  protected valOsc4Decay = 0;
-  protected valOsc4Sustain = 0;
-  protected valOsc4Release = 0;
+  public defVcoWave = 1;
+  public defVcoGain = 1;
+  public defVcoPan = 0;
+  public defVcoTune = -5;
+  public defVcoEnvAttack = 0;
+  public defVcoEnvDecay = 0;
+  public defVcoEnvSustain = 1;
+  public defVcoEnvRelease = 0.4;
 
   constructor() {
     this.audioCtx = new AudioContext();
@@ -70,24 +31,21 @@ export class AudioComponent implements OnInit {
     const t = this.audioCtx.currentTime;
     this.panMaster = this.audioCtx.createStereoPanner();
     this.panMaster.connect(this.audioCtx.destination);
-    this.panMaster.pan.value = this.valPanning;
+    this.panMaster.pan.value = this.defMasterPan;
 
     this.gainMaster = this.audioCtx.createGain();
     this.gainMaster.connect(this.panMaster);
-    this.gainMaster.gain.setValueAtTime(this.valVolume, t);
+    this.gainMaster.gain.setValueAtTime(this.defMasterVolume, t);
 
     this.setFadeOut();
   }
 
   createVco(hz: number) {
-    return new VCO(hz, this.audioCtx, this.gainMaster, this.valOsc1Pan, this.valOsc1Gain, this.valOsc1Wave, this.valOsc1Attack,
-      this.valOsc1Decay, this.valOsc1Release, this.valOsc1Sustain, this.valOsc1Tune);
+    return new VCO(this, hz);
   }
 
   setFadeOut() {
-    const relArr = [this.valOsc1Release, this.valOsc2Release, this.valOsc3Release, this.valOsc4Release];
-    const average = relArr.reduce((prev, curr) => prev + curr, 0) / relArr.length;
-    this.fadeOut = average * 10;
+    this.fadeOut = this.defVcoEnvRelease * 10;
   }
 }
 
@@ -95,50 +53,66 @@ class VCO {
 
   private waveforms = ['sine', 'sawtooth', 'square', 'triangle'];
 
+  private pan: any;
   private vco: any;
   private vca: any;
 
-  constructor(protected hz: number, protected audioCtx: any, protected gainMaster: any, protected valPan: number,
-              protected valGain: number, protected valWave: number, protected valAttack: number,
-              protected valDecay: number, protected valRelease: number, protected valSustain: number,
-              protected valTune: number) {}
+  constructor(protected context: AudioComponent, protected hz: number) {}
 
   public start(): void {
-    const t = this.audioCtx.currentTime;
-    const pan = this.createOscPan(this.valPan);
-    pan.connect(this.gainMaster);
+    const t = this.context.audioCtx.currentTime;
+    this.pan = this.createOscPan(this.context.defVcoPan);
+    this.pan.connect(this.context.gainMaster);
     this.vca = this.createOscGain(t);
-    this.vca.connect(pan);
+    this.vca.connect(this.pan);
     this.vco = this.createOscillator(t);
     this.vco.connect(this.vca);
     this.vco.start();
   }
 
-  public stop() {
-    const t = this.audioCtx.currentTime;
+  public stop(): void {
+    const t = this.context.audioCtx.currentTime;
     this.createOscRelease(t);
-    this.vco.stop(t + this.valRelease * 7);
+    this.vco.stop(t + this.context.defVcoEnvRelease * 7);
+  }
+
+  public setWaveform(wf: number): void {
+    this.vco.type = this.waveforms[wf];
+  }
+
+  public setGain(g: number): void {
+    const t = this.context.audioCtx.currentTime;
+    this.vca.gain.setValueAtTime(g, t);
+  }
+
+  public setPan(p: number): void {
+    this.pan.pan.value = p;
+  }
+
+  public setTune(tune: number): void {
+    const t = this.context.audioCtx.currentTime;
+    this.vco.detune.setValueAtTime(tune, t);
   }
 
   private createOscPan(val: number): any {
-    const oscPan = this.audioCtx.createStereoPanner();
+    const oscPan = this.context.audioCtx.createStereoPanner();
     oscPan.pan.value = val;
     return oscPan;
   }
 
   private createOscGain(t: number): any {
-    const oscGain = this.audioCtx.createGain();
+    const oscGain = this.context.audioCtx.createGain();
     oscGain.gain.setValueAtTime(0, t);
-    oscGain.gain.linearRampToValueAtTime(this.valGain, t + this.valAttack);
-    const max = this.valSustain > this.valGain ? this.valGain : this.valSustain;
-    oscGain.gain.setTargetAtTime(max, t + this.valAttack, this.valDecay);
+    oscGain.gain.linearRampToValueAtTime(this.context.defVcoGain, t + this.context.defVcoEnvAttack);
+    const max = this.context.defVcoEnvSustain > this.context.defVcoGain ? this.context.defVcoGain : this.context.defVcoEnvSustain;
+    oscGain.gain.setTargetAtTime(max, t + this.context.defVcoEnvAttack, this.context.defVcoEnvDecay);
     return oscGain;
   }
 
   private createOscillator(t: number) {
-    const osc = this.audioCtx.createOscillator();
-    osc.type = this.waveforms[this.valWave];
-    osc.detune.setValueAtTime(this.valTune, t);
+    const osc = this.context.audioCtx.createOscillator();
+    osc.type = this.waveforms[this.context.defVcoWave];
+    osc.detune.setValueAtTime(this.context.defVcoTune, t);
     osc.frequency.setValueAtTime(this.hz, t);
     return osc;
   }
@@ -147,6 +121,6 @@ class VCO {
     const oscGain = this.vca.gain.value; // important: store gain before cancelScheduledValues
     this.vca.gain.cancelScheduledValues(t);
     this.vca.gain.setValueAtTime(oscGain, t);
-    this.vca.gain.setTargetAtTime(0, t, this.valRelease);
+    this.vca.gain.setTargetAtTime(0, t, this.context.defVcoEnvRelease);
   }
 }
