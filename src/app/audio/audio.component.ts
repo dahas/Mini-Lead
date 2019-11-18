@@ -5,8 +5,6 @@ export class AudioComponent implements OnInit {
 
   public audioCtx: any;
 
-  public fadeOut: number;
-
   public panMaster: any;
   public gainMaster: any;
 
@@ -36,16 +34,10 @@ export class AudioComponent implements OnInit {
     this.gainMaster = this.audioCtx.createGain();
     this.gainMaster.connect(this.panMaster);
     this.gainMaster.gain.setValueAtTime(this.defMasterVolume, t);
-
-    this.setFadeOut();
   }
 
   createVco(hz: number) {
     return new VCO(this, hz);
-  }
-
-  setFadeOut() {
-    this.fadeOut = this.defVcoEnvRelease * 10;
   }
 }
 
@@ -57,7 +49,7 @@ class VCO {
   private vco: any;
   private vca: any;
 
-  constructor(protected context: AudioComponent, protected hz: number) {}
+  constructor(protected context: AudioComponent, protected hz: number) { }
 
   public start(): void {
     const t = this.context.audioCtx.currentTime;

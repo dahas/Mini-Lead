@@ -10,8 +10,11 @@ export class AppComponent extends AudioComponent {
 
   private vcos = {};
 
+  public fadeOut: number;
+
   constructor() {
     super();
+    this.fadeOut = this.defVcoEnvRelease * 10;
   }
 
   setMasterVolume(v: number): void {
@@ -77,5 +80,6 @@ export class AppComponent extends AudioComponent {
   }
   setVcoEnvRelease(release: number): void {
     this.defVcoEnvRelease = release;
+    this.fadeOut = release * 10;
   }
 }
