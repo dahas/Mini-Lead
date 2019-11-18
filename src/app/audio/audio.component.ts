@@ -103,7 +103,7 @@ class VCO {
               protected valDecay: number, protected valRelease: number, protected valSustain: number,
               protected valTune: number) {}
 
-  start(): void {
+  public start(): void {
     const t = this.audioCtx.currentTime;
     const pan = this.createOscPan(this.valPan);
     pan.connect(this.gainMaster);
@@ -114,19 +114,19 @@ class VCO {
     this.vco.start();
   }
 
-  stop() {
+  public stop() {
     const t = this.audioCtx.currentTime;
     this.createOscRelease(t);
     this.vco.stop(t + this.valRelease * 7);
   }
 
-  createOscPan(val: number): any {
+  private createOscPan(val: number): any {
     const oscPan = this.audioCtx.createStereoPanner();
     oscPan.pan.value = val;
     return oscPan;
   }
 
-  createOscGain(t: number): any {
+  private createOscGain(t: number): any {
     const oscGain = this.audioCtx.createGain();
     oscGain.gain.setValueAtTime(0, t);
     oscGain.gain.linearRampToValueAtTime(this.valGain, t + this.valAttack);
@@ -135,7 +135,7 @@ class VCO {
     return oscGain;
   }
 
-  createOscillator(t: number) {
+  private createOscillator(t: number) {
     const osc = this.audioCtx.createOscillator();
     osc.type = this.waveforms[this.valWave];
     osc.detune.setValueAtTime(this.valTune, t);
@@ -143,7 +143,7 @@ class VCO {
     return osc;
   }
 
-  createOscRelease(t: number): void {
+  private createOscRelease(t: number): void {
     const oscGain = this.vca.gain.value; // important: store gain before cancelScheduledValues
     this.vca.gain.cancelScheduledValues(t);
     this.vca.gain.setValueAtTime(oscGain, t);
