@@ -82,4 +82,35 @@ export class AppComponent extends AudioComponent {
     this.defVcoEnvRelease = release;
     this.fadeOut = release * 10;
   }
+
+  setVcfFilter(f: number): void {
+    this.defVcfFilter = f;
+    Object.keys(this.vcos).forEach(note => {
+      this.vcos[note].setFilter(f);
+    });
+  }
+  setVcfCutoff(c: number): void {
+    this.defVcfCutoff = c;
+    Object.keys(this.vcos).forEach(note => {
+      this.vcos[note].setCutoff(c);
+    });
+  }
+  setVcfRes(r: number): void {
+    this.defVcfResonance = r;
+    Object.keys(this.vcos).forEach(note => {
+      this.vcos[note].setResonance(r);
+    });
+  }
+  setVcfEnvAttack(attack: number): void {
+    this.defVcfEnvAttack = attack;
+  }
+  setVcfEnvDecay(decay: number): void {
+    this.defVcfEnvDecay = decay;
+  }
+  setVcfEnvSustain(sustain: number): void {
+    this.defVcfEnvSustain = sustain;
+  }
+  setVcfEnvRelease(release: number): void {
+    this.defVcfEnvRelease = release;
+  }
 }

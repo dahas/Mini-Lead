@@ -10,6 +10,7 @@ import { jqxSliderComponent } from 'jqwidgets-ng/jqxslider';
 import { dhMasterComponent } from './components/dh-master/dh-master.component';
 import { dhKeyboardComponent } from './components/dh-keyboard/dh-keyboard.component';
 import { dhOscillatorComponent } from './components/dh-oscillator/dh-oscillator.component';
+import { dhFilterComponent } from './components/dh-filter/dh-filter.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { dhOscillatorComponent } from './components/dh-oscillator/dh-oscillator.
     jqxSliderComponent,
     dhMasterComponent,
     dhKeyboardComponent,
-    dhOscillatorComponent
+    dhOscillatorComponent,
+    dhFilterComponent
   ],
   imports: [
     BrowserModule,

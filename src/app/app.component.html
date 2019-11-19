@@ -13,6 +13,13 @@
         (tuneChange)="setVcoTune($event)" (attackChange)="setVcoEnvAttack($event)" (decayChange)="setVcoEnvDecay($event)"
         (sustainChange)="setVcoEnvSustain($event)" (releaseChange)="setVcoEnvRelease($event)"></dhOscillator>
     </div>
+    <div class="osc shadow round-corners">
+      <dhFilter [cutoff]="defVcfCutoff" [resonance]="defVcfResonance" [filter]="defVcfFilter"
+      [attack]="defVcfEnvAttack" [decay]="defVcfEnvDecay" [sustain]="defVcfEnvSustain" [release]="defVcfEnvRelease" 
+      (cutoffChange)="setVcfCutoff($event)" (resChange)="setVcfRes($event)" (filterChange)="setVcfFilter($event)"
+        (attackChange)="setVcfEnvAttack($event)" (decayChange)="setVcfEnvDecay($event)"
+        (sustainChange)="setVcfEnvSustain($event)" (releaseChange)="setVcfEnvRelease($event)"></dhFilter>
+    </div>
   </div>
 
   <div class="keyboard shadow round-corners">

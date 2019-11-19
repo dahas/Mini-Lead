@@ -34,6 +34,13 @@
   flex: 1;
   bottom: 7px;
   left: 16px;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .dh-key-black {
@@ -59,8 +66,14 @@
   flex: 1;
   bottom: 7px;
   left: 6px;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-
 
 @keyframes fade2white {
   from {
