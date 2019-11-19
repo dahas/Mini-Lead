@@ -1,14 +1,7 @@
 <div class="osc">
   <div class="controls">
     <div class="control">
-      <div class="label">Gain</div>
-      <jqxKnob (onChange)="changeGain($event)" [value]="gain" [min]="0" [max]="1" [step]="0.01" [startAngle]="120"
-        [endAngle]="480" [snapToStep]="false" [rotation]="'clockwise'" [width]="40" [height]="40" [marks]="marksGain"
-        [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120" [dragEndAngle]="420">
-      </jqxKnob>
-    </div>
-    <div class="control">
-      <div class="label">Wave</div>
+      <div class="label">Osc</div>
       <jqxKnob (onChange)="changeWave($event)" [value]="wave" [min]="0" [max]="3" [step]="1" [startAngle]="120"
         [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40" [marks]="marksWave"
         [labels]="labelsWave" [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="180"

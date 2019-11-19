@@ -51,12 +51,6 @@ export class AppComponent extends AudioComponent {
       this.vcos[note].setWaveform(wf);
     });
   }
-  setVcoGain(gain: number): void {
-    this.defVcoGain = gain;
-    Object.keys(this.vcos).forEach(note => {
-      this.vcos[note].setGain(gain);
-    });
-  }
   setVcoPan(pan: number): void {
     this.defVcoPan = pan;
     Object.keys(this.vcos).forEach(note => {

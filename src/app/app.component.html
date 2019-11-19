@@ -7,9 +7,9 @@
 
   <div class="oscillators">
     <div class="osc shadow round-corners">
-      <dhOscillator [wave]="defVcoWave" [gain]="defVcoGain" [pan]="defVcoPan" [tune]="defVcoTune"
+      <dhOscillator [wave]="defVcoWave" [pan]="defVcoPan" [tune]="defVcoTune"
       [attack]="defVcoEnvAttack" [decay]="defVcoEnvDecay" [sustain]="defVcoEnvSustain" [release]="defVcoEnvRelease" 
-      (waveChange)="setVcoWave($event)" (gainChange)="setVcoGain($event)" (panChange)="setVcoPan($event)"
+      (waveChange)="setVcoWave($event)" (panChange)="setVcoPan($event)"
         (tuneChange)="setVcoTune($event)" (attackChange)="setVcoEnvAttack($event)" (decayChange)="setVcoEnvDecay($event)"
         (sustainChange)="setVcoEnvSustain($event)" (releaseChange)="setVcoEnvRelease($event)"></dhOscillator>
     </div>

@@ -16,7 +16,6 @@ export class dhOscillatorComponent implements AfterViewInit {
   @ViewChild('sliderRelease', null) sliderRelease: jqxSliderComponent;
 
   @Input() wave = 1;
-  @Input() gain = 0;
   @Input() pan = 0;
   @Input() tune = 0;
   @Input() attack = 0;
@@ -25,7 +24,6 @@ export class dhOscillatorComponent implements AfterViewInit {
   @Input() release = 0;
 
   @Output() waveChange = new EventEmitter<number>();
-  @Output() gainChange = new EventEmitter<number>();
   @Output() panChange = new EventEmitter<number>();
   @Output() tuneChange = new EventEmitter<number>();
   @Output() attackChange = new EventEmitter<number>();
@@ -84,10 +82,6 @@ export class dhOscillatorComponent implements AfterViewInit {
 
   changeWave(e: any): void {
     this.waveChange.emit(e.args.value);
-  }
-
-  changeGain(e: any): void {
-    this.gainChange.emit(parseFloat(e.args.value));
   }
 
   changePan(e: any): void {
