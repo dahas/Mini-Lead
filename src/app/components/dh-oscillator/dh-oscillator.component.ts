@@ -15,23 +15,19 @@ export class dhOscillatorComponent implements AfterViewInit {
   @ViewChild('sliderSustain', null) sliderSustain: jqxSliderComponent;
   @ViewChild('sliderRelease', null) sliderRelease: jqxSliderComponent;
 
-  @Input() wave = 1;
-  @Input() pan = 0;
-  @Input() tune = 0;
+  @Input() osc = 1;
   @Input() attack = 0;
   @Input() decay = 0;
   @Input() sustain = 1;
   @Input() release = 0;
 
-  @Output() waveChange = new EventEmitter<number>();
-  @Output() panChange = new EventEmitter<number>();
-  @Output() tuneChange = new EventEmitter<number>();
+  @Output() oscChange = new EventEmitter<number>();
   @Output() attackChange = new EventEmitter<number>();
   @Output() decayChange = new EventEmitter<number>();
   @Output() sustainChange = new EventEmitter<number>();
   @Output() releaseChange = new EventEmitter<number>();
 
-  marksWave: any = {
+  marks: any = {
     colorRemaining: 'orange',
     colorProgress: 'orange',
     offset: '85%',
@@ -40,17 +36,6 @@ export class dhOscillatorComponent implements AfterViewInit {
     majorSize: '16%',
     majorInterval: 0,
     minorInterval: 1
-  };
-
-  marksGain: any = {
-    colorRemaining: '#555',
-    colorProgress: 'orange',
-    offset: '85%',
-    thickness: 2,
-    size: '6%',
-    majorSize: '16%',
-    majorInterval: 1,
-    minorInterval: 0.02
   };
 
   pointer: any = {
@@ -80,16 +65,8 @@ export class dhOscillatorComponent implements AfterViewInit {
     this.sliderRelease.setValue(this.release * 100);
   }
 
-  changeWave(e: any): void {
-    this.waveChange.emit(e.args.value);
-  }
-
-  changePan(e: any): void {
-    this.panChange.emit(parseFloat(e.args.value));
-  }
-
-  changeTune(e: any): void {
-    this.tuneChange.emit(e.args.value);
+  changeOsc(e: any): void {
+    this.oscChange.emit(e.args.value);
   }
 
   changeAttack(e: any): void {

@@ -14,10 +14,6 @@ export class AudioComponent implements OnInit {
 
   public defVcoWave = 1; // Sawtooth
   public defVcoGain = 1;
-  public defVcoPan = 0;
-  public defVcoTune = -5;
-  public defLfoDepth = 0.2;
-  public defLfoRate = 5;
   public defVcoEnvAttack = 0;
   public defVcoEnvDecay = 0;
   public defVcoEnvSustain = 1;
@@ -30,6 +26,11 @@ export class AudioComponent implements OnInit {
   public defVcfEnvDecay = 0;
   public defVcfEnvSustain = 1;
   public defVcfEnvRelease = 0;
+
+  public defLfoOsc = 0; // Sine
+  public defLfoSource = 0; // Gain
+  public defLfoDepth = 0.2;
+  public defLfoRate = 5;
 
   constructor() {
     this.audioCtx = new AudioContext();
@@ -55,6 +56,7 @@ class VCO {
 
   private waveforms = ['sine', 'sawtooth', 'square', 'triangle'];
   private filters = ['lowpass', 'highpass', 'bandpass', 'lowshelf', 'highshelf', 'peaking', 'notch', 'allpass'];
+  private lfoSource: number; // 0=VCA (gain), 1=VCO (tune), 2=VCF (filter)
 
   private vcf: any;
   private lfo: any;
@@ -99,16 +101,6 @@ class VCO {
     this.vco.type = this.waveforms[wf];
   }
 
-  public setGain(g: number): void {
-    const t = this.context.audioCtx.currentTime;
-    this.envVca.gain.setValueAtTime(g, t);
-  }
-
-  public setTune(tune: number): void {
-    const t = this.context.audioCtx.currentTime;
-    this.vco.detune.setValueAtTime(tune, t);
-  }
-
   public setFilter(f: number): void {
     this.vcf.type = this.filters[f];
   }
@@ -122,10 +114,25 @@ class VCO {
     this.vcf.Q.value = q;
   }
 
+  public setLfoOsc(wf: number): void {
+    this.lfo.type = this.waveforms[wf];
+  }
+
+  public setLfoSource(s: number): void {
+
+  }
+
+  public setLfoDepth(d: number): void {
+    this.lfoGain.gain.value = d;
+  }
+
+  public setLfoRate(r: number): void {
+    this.lfo.frequency.value = r;
+  }
+
   private createOscillator(t: number) {
     const osc = this.context.audioCtx.createOscillator();
     osc.type = this.waveforms[this.context.defVcoWave];
-    osc.detune.setValueAtTime(this.context.defVcoTune, t);
     osc.frequency.setValueAtTime(this.hz, t);
     return osc;
   }

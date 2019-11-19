@@ -51,16 +51,28 @@ export class AppComponent extends AudioComponent {
       this.vcos[note].setWaveform(wf);
     });
   }
-  setVcoPan(pan: number): void {
-    this.defVcoPan = pan;
+  setLfoOsc(wf: number): void {
+    this.defLfoOsc = wf;
     Object.keys(this.vcos).forEach(note => {
-      this.vcos[note].setPan(pan);
+      this.vcos[note].setLfoOsc(wf);
     });
   }
-  setVcoTune(tune: number): void {
-    this.defVcoTune = tune;
+  setLfoSource(src: number): void {
+    this.defLfoSource = src;
     Object.keys(this.vcos).forEach(note => {
-      this.vcos[note].setTune(tune);
+      this.vcos[note].setLfoSource(src);
+    });
+  }
+  setLfoDepth(dp: number): void {
+    this.defLfoDepth = dp;
+    Object.keys(this.vcos).forEach(note => {
+      this.vcos[note].setLfoDepth(dp);
+    });
+  }
+  setLfoRate(rt: number): void {
+    this.defLfoRate = rt;
+    Object.keys(this.vcos).forEach(note => {
+      this.vcos[note].setLfoRate(rt);
     });
   }
   setVcoEnvAttack(attack: number): void {
