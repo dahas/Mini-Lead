@@ -39,6 +39,7 @@ export class AudioComponent implements OnInit {
 
   ngOnInit(): void {
     this.analyser = this.audioCtx.createAnalyser();
+    this.analyser.fftSize = 2048;
     this.analyser.connect(this.audioCtx.destination);
 
     const t = this.audioCtx.currentTime;

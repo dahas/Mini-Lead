@@ -20,7 +20,6 @@ export class dhOscilloscopeComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit() {
-    this.analyser.fftSize = 2048;
     this.canvas = this.myCanvas.nativeElement.getContext('2d');
     this.canvas.clearRect(0, 0, this.width, this.height);
     this.draw();
@@ -34,7 +33,7 @@ export class dhOscilloscopeComponent implements AfterViewInit {
     this.canvas.fillStyle = 'rgb(0, 0, 0)';
     this.canvas.fillRect(0, 0, this.width, this.height);
     this.canvas.lineWidth = 1;
-    this.canvas.strokeStyle = 'lightblue';
+    this.canvas.strokeStyle = '#89d0ff';
     this.canvas.beginPath();
 
     const sliceWidth = this.width * 1.0 / bufferLength;
