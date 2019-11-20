@@ -38,17 +38,17 @@ export class AudioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.analyser = this.audioCtx.createAnalyser();
+    this.analyser.connect(this.audioCtx.destination);
+
     const t = this.audioCtx.currentTime;
     this.panMaster = this.audioCtx.createStereoPanner();
     this.panMaster.pan.value = this.defMasterPan;
-    this.panMaster.connect(this.audioCtx.destination);
-
-    this.analyser = this.audioCtx.createAnalyser();
-    this.analyser.connect(this.panMaster);
+    this.panMaster.connect(this.analyser);
 
     this.gainMaster = this.audioCtx.createGain();
     this.gainMaster.gain.setValueAtTime(this.defMasterVolume, t);
-    this.gainMaster.connect(this.analyser);
+    this.gainMaster.connect(this.panMaster);
   }
 
   createVco(hz: number) {
@@ -144,7 +144,7 @@ class VCO {
         this.lfoGain.gain.value = d * 100;
         break;
       case 2:
-        this.lfoGain.gain.value = d * 500;
+        this.lfoGain.gain.value = d * 1000;
         break;
     }
   }
@@ -177,7 +177,7 @@ class VCO {
         lfoGain.gain.value = this.context.defLfoDepth * 100;
         break;
       case 2:
-        lfoGain.gain.value = this.context.defLfoDepth * 500;
+        lfoGain.gain.value = this.context.defLfoDepth * 1000;
         break;
     }
     return lfoGain;

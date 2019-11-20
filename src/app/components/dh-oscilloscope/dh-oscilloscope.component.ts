@@ -34,7 +34,7 @@ export class dhOscilloscopeComponent implements AfterViewInit {
     this.canvas.fillStyle = 'rgb(0, 0, 0)';
     this.canvas.fillRect(0, 0, this.width, this.height);
     this.canvas.lineWidth = 1;
-    this.canvas.strokeStyle = 'orange';
+    this.canvas.strokeStyle = 'lightblue';
     this.canvas.beginPath();
 
     const sliceWidth = this.width * 1.0 / bufferLength;
