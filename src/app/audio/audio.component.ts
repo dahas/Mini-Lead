@@ -28,9 +28,9 @@ export class AudioComponent implements OnInit {
   public defVcfEnvRelease = 0;
 
   public defLfoOsc = 0; // Sine
-  public defLfoSource = 0; // Gain
-  public defLfoDepth = 0.2;
-  public defLfoRate = 5;
+  public defLfoSource = 2; // 0=VCA (gain), 1=VCO (tune), 2=VCF (filter)
+  public defLfoDepth = 0.5;
+  public defLfoRate = 3;
 
   constructor() {
     this.audioCtx = new AudioContext();
@@ -56,7 +56,6 @@ class VCO {
 
   private waveforms = ['sine', 'sawtooth', 'square', 'triangle'];
   private filters = ['lowpass', 'highpass', 'bandpass', 'lowshelf', 'highshelf', 'peaking', 'notch', 'allpass'];
-  private lfoSource: number; // 0=VCA (gain), 1=VCO (tune), 2=VCF (filter)
 
   private vcf: any;
   private lfo: any;
@@ -79,7 +78,17 @@ class VCO {
     this.vco.connect(this.envVca);
 
     this.lfoGain = this.createLfoGain(t);
-    this.lfoGain.connect(this.vcoGain.gain);
+    switch (this.context.defLfoSource) {
+      case 0:
+        this.lfoGain.connect(this.vcoGain.gain);
+        break;
+      case 1:
+        this.lfoGain.connect(this.vco.detune);
+        break;
+      case 2:
+        this.lfoGain.connect(this.vcf.frequency);
+        break;
+    }
     this.lfo = this.createLfo(t);
     this.lfo.connect(this.lfoGain);
 
@@ -123,7 +132,17 @@ class VCO {
   }
 
   public setLfoDepth(d: number): void {
-    this.lfoGain.gain.value = d;
+    switch (this.context.defLfoSource) {
+      case 0:
+        this.lfoGain.gain.value = d;
+        break;
+      case 1:
+        this.lfoGain.gain.value = d * 100;
+        break;
+      case 2:
+        this.lfoGain.gain.value = d * 500;
+        break;
+    }
   }
 
   public setLfoRate(r: number): void {
@@ -139,14 +158,24 @@ class VCO {
 
   private createLfo(t: number) {
     const oscLfo = this.context.audioCtx.createOscillator();
-    oscLfo.type = this.waveforms[0];
+    oscLfo.type = this.waveforms[this.context.defLfoOsc];
     oscLfo.frequency.value = this.context.defLfoRate;
     return oscLfo;
   }
 
   private createLfoGain(t: number) {
     const lfoGain = this.context.audioCtx.createGain();
-    lfoGain.gain.value = this.context.defLfoDepth;
+    switch (this.context.defLfoSource) {
+      case 0:
+        lfoGain.gain.value = this.context.defLfoDepth;
+        break;
+      case 1:
+        lfoGain.gain.value = this.context.defLfoDepth * 100;
+        break;
+      case 2:
+        lfoGain.gain.value = this.context.defLfoDepth * 500;
+        break;
+    }
     return lfoGain;
   }
 
@@ -175,7 +204,7 @@ class VCO {
   private createFilter(t: number): any {
     const filter = this.context.audioCtx.createBiquadFilter();
     filter.type = this.filters[this.context.defVcfFilter];
-    filter.Q.value = this.context.defVcfResonance;
+    filter.Q.value = this.context.defVcfResonance / 2;
     filter.frequency.setValueAtTime(0, t);
     filter.frequency.linearRampToValueAtTime(this.context.defVcfCutoff, t + this.context.defVcfEnvAttack);
     filter.frequency.setTargetAtTime(this.context.defVcfCutoff * this.context.defVcfEnvSustain,

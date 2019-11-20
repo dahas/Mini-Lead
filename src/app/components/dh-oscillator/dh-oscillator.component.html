@@ -1,9 +1,9 @@
 <div class="osc">
-    <div class="controls">
-      <span class="mod-label-vertical">
-        VCO
-      </span>
-    </div>
+  <div class="controls">
+    <span class="mod-label-vertical">
+      VCO
+    </span>
+  </div>
   <div class="controls">
     <div class="control">
       <div class="label">OSC</div>
@@ -18,36 +18,36 @@
   <div class="controls">
     <div class="control adsr">
       <div class="label">A</div>
-      <jqxSlider #sliderAttack (onChange)="changeAttack($event)" [showButtons]="false" 
-      [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="250"
-        [ticksFrequency]="25" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
+      <jqxSlider #sliderAttack (onChange)="changeAttack($event)" [showButtons]="false" [height]="115" [width]="40"
+        [orientation]="'vertical'" [min]="0" [max]="250" [ticksFrequency]="25" [tooltip]="false" [mode]="'fixed'"
+        [tickSize]="4">
       </jqxSlider>
     </div>
   </div>
   <div class="controls">
     <div class="control adsr">
       <div class="label">D</div>
-      <jqxSlider #sliderDecay (onChange)="changeDecay($event)" [showButtons]="false" 
-      [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="100"
-        [ticksFrequency]="10" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
+      <jqxSlider #sliderDecay (onChange)="changeDecay($event)" [showButtons]="false" [height]="115" [width]="40"
+        [orientation]="'vertical'" [min]="0" [max]="100" [ticksFrequency]="10" [tooltip]="false" [mode]="'fixed'"
+        [tickSize]="4">
       </jqxSlider>
     </div>
   </div>
   <div class="controls">
     <div class="control adsr">
       <div class="label">S</div>
-      <jqxSlider #sliderSustain (onChange)="changeSustain($event)" [showButtons]="false" 
-      [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="100"
-        [ticksFrequency]="10" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
+      <jqxSlider #sliderSustain (onChange)="changeSustain($event)" [showButtons]="false" [height]="115" [width]="40"
+        [orientation]="'vertical'" [min]="0" [max]="100" [ticksFrequency]="10" [tooltip]="false" [mode]="'fixed'"
+        [tickSize]="4">
       </jqxSlider>
     </div>
   </div>
   <div class="controls">
     <div class="control adsr">
       <div class="label">R</div>
-      <jqxSlider #sliderRelease (onChange)="changeRelease($event)" [showButtons]="false" 
-      [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="250"
-        [ticksFrequency]="25" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
+      <jqxSlider #sliderRelease (onChange)="changeRelease($event)" [showButtons]="false" [height]="115" [width]="40"
+        [orientation]="'vertical'" [min]="0" [max]="250" [ticksFrequency]="25" [tooltip]="false" [mode]="'fixed'"
+        [tickSize]="4">
       </jqxSlider>
     </div>
   </div>

@@ -10,9 +10,9 @@ body {
 }
 
 .shadow {
-  -webkit-box-shadow: $distance $distance 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: $distance $distance 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: $distance $distance 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: $distance $distance 3px 0px rgb(0, 0, 0);
+  -moz-box-shadow: $distance $distance 3px 0px rgb(0, 0, 0);
+  box-shadow: $distance $distance 3px 0px rgb(0, 0, 0);
 }
 
 .round-corners {
@@ -22,12 +22,12 @@ body {
 }
 
 .synth {
-  height: 100%;
+  width: 834px;
   display: flex;
   flex-direction: column;
   color: #fff;
   background: #555;
-  //   border: 4px solid rgb(212, 26, 26);
+    // border: 8px solid rgb(0, 0, 0);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -35,12 +35,30 @@ body {
 }
 
 .master {
+  float: left;
   align-items: center;
-  display: flex;
+  width: 280px;
   background: #333;
   height: 120px;
-  margin-top: $space;
-  padding-left: 20px;
+  margin: $space 0 0 0;
+}
+
+.oscilloscope {
+  float: left;
+  align-items: center;
+  width: 528px;
+  background: #333;
+  height: 120px;
+  margin: $space 0 0 $space;
+}
+
+.mod-label-vertical {
+  width: 50px;
+  writing-mode: tb-rl;
+  transform: rotate(-180deg);
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    color: #444;
+    font-size: 36px;
 }
 
 .oscillators {
@@ -48,15 +66,6 @@ body {
   // display: flex;
   // flex-direction: row;
   justify-content: space-between;
-
-  .mod-label-vertical {
-    width: 50px;
-    writing-mode: tb-rl;
-    transform: rotate(-180deg);
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      color: #444;
-      font-size: 36px;
-  }
 
   .osc {
     float: left;
@@ -69,7 +78,7 @@ body {
     margin-left: 0;
   }
   .osc:last-child {
-    width: 170px;
+    width: 180px;
   }
 }
 

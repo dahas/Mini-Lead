@@ -1,10 +1,15 @@
+.control-lbl {
+  float: left;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 8px 10px 5px 0;
+}
+
 .control {
   float: left;
   box-sizing: border-box;
-  // width: 100px;
   text-align: center;
   padding: 10px;
-  // background: silver;
 
   .label {
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
