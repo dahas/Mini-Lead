@@ -1,6 +1,6 @@
 .dh-keys {
-  overflow-y: hidden;
-  overflow-x: auto;
+  overflow: hidden;
+  // overflow-x: auto;
 }
 
 .dh-range {
@@ -8,7 +8,7 @@
   flex-direction: row;
   width: 2280px;
   height: 200px;
-  padding-bottom: 8px;
+  padding-bottom: 0px;
 }
 
 .dh-key-white {

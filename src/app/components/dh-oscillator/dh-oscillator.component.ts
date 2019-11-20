@@ -44,12 +44,12 @@ export class dhOscillatorComponent implements AfterViewInit {
     size: '60%', offset: '50%'
   };
   spinner: any = {
-    style: { fill: '#17a25d', stroke: '#117B46' },
+    style: { fill: '#17a25d', stroke: '#666' },
     innerRadius: '65%', // specifies the inner Radius of the dial
     outerRadius: '70%', // specifies the outer Radius of the dial
   };
   dial: any = {
-    style: { fill: '#17a25d', stroke: '#117B46' },
+    style: { fill: { color: '#a7a7a7', gradientType: 'linear', gradientStops: [[0, 1], [50, 0.5], [100, 1]] }, stroke: '#666' },
     innerRadius: '0%', // specifies the inner Radius of the dial
     outerRadius: '50%' // specifies the outer Radius of the dial
   };

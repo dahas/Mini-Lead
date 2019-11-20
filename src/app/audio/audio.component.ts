@@ -39,7 +39,6 @@ export class AudioComponent implements OnInit {
 
   ngOnInit(): void {
     this.analyser = this.audioCtx.createAnalyser();
-    this.analyser.fftSize = 2048;
     this.analyser.connect(this.audioCtx.destination);
 
     const t = this.audioCtx.currentTime;
@@ -70,6 +69,7 @@ class VCO {
   private envVca: any;
 
   constructor(protected context: AudioComponent, protected hz: number) { }
+
 
   public start(): void {
     const t = this.context.audioCtx.currentTime;
@@ -130,10 +130,6 @@ class VCO {
 
   public setLfoOsc(wf: number): void {
     this.lfo.type = this.waveforms[wf];
-  }
-
-  public setLfoSource(s: number): void {
-
   }
 
   public setLfoDepth(d: number): void {

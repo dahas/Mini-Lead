@@ -59,20 +59,6 @@ export class AppComponent extends AudioComponent {
   }
   setLfoSource(src: number): void {
     this.defLfoSource = src;
-    Object.keys(this.vcos).forEach(note => {
-      this.vcos[note].setLfoSource(src);
-      // switch (src) {
-      //   case 0:
-      //     this.vcos[note].setLfoDepth(this.defLfoDepth);
-      //     break;
-      //   case 1:
-      //     this.vcos[note].setLfoDepth(this.defLfoDepth * 100);
-      //     break;
-      //   case 2:
-      //     this.vcos[note].setLfoDepth(this.defLfoDepth * 10000);
-      //     break;
-      // }
-    });
   }
   setLfoDepth(dp: number): void {
     this.defLfoDepth = dp;

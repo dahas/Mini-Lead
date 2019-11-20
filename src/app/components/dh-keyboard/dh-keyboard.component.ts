@@ -1,4 +1,4 @@
-import { Component, HostListener, Output, EventEmitter, Input } from '@angular/core';
+import { Component, HostListener, Output, EventEmitter, Input, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -7,7 +7,9 @@ import { Component, HostListener, Output, EventEmitter, Input } from '@angular/c
   styleUrls: ['./dh-keyboard.component.scss']
 })
 // tslint:disable-next-line:class-name
-export class dhKeyboardComponent {
+export class dhKeyboardComponent implements AfterViewInit {
+
+  @ViewChild('range', { static: false }) range: any;
 
   @Input() fadeOut = 0;
 
@@ -39,6 +41,11 @@ export class dhKeyboardComponent {
     this.keyMap.set(79, [c++, 'C#4']); // O
     this.keyMap.set(76, [c++, 'D4']);  // L
     this.keyMap.set(80, [c++, 'D#4']); // P
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.range);
+    this.range.nativeElement.scrollLeft = 627;
   }
 
   // PC keyboard input:
