@@ -12,6 +12,7 @@ import { dhKeyboardComponent } from './components/dh-keyboard/dh-keyboard.compon
 import { dhOscillatorComponent } from './components/dh-oscillator/dh-oscillator.component';
 import { dhFilterComponent } from './components/dh-filter/dh-filter.component';
 import { dhLfoComponent } from './components/dh-lfo/dh-lfo.component';
+import { dhOscilloscopeComponent } from './components/dh-oscilloscope/dh-oscilloscope.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { dhLfoComponent } from './components/dh-lfo/dh-lfo.component';
     dhKeyboardComponent,
     dhOscillatorComponent,
     dhFilterComponent,
-    dhLfoComponent
+    dhLfoComponent,
+    dhOscilloscopeComponent
   ],
   imports: [
     BrowserModule,

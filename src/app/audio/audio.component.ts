@@ -7,6 +7,7 @@ export class AudioComponent implements OnInit {
 
   public panMaster: any;
   public gainMaster: any;
+  public analyser: any;
 
   public defMasterVolume = 0.5;
   public defMasterPan = 0;
@@ -42,9 +43,12 @@ export class AudioComponent implements OnInit {
     this.panMaster.pan.value = this.defMasterPan;
     this.panMaster.connect(this.audioCtx.destination);
 
+    this.analyser = this.audioCtx.createAnalyser();
+    this.analyser.connect(this.panMaster);
+
     this.gainMaster = this.audioCtx.createGain();
     this.gainMaster.gain.setValueAtTime(this.defMasterVolume, t);
-    this.gainMaster.connect(this.panMaster);
+    this.gainMaster.connect(this.analyser);
   }
 
   createVco(hz: number) {
