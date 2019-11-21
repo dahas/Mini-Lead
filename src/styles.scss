@@ -127,7 +127,11 @@ body {
   border-radius: 10% !important;
 }
 
-.jqx-fill-state-normal {
+jqx-tooltip-text {
+  color: white !important;
+}
+
+.jqx-fill-state-normal-dh {
   border-color: #333 !important;
   background: #555; /* Old browsers */
   background: -moz-linear-gradient(top, #aebcbf 0%, #6e7774 0%, #0a0e0a 99%, #0a0809 100%) !important; /* FF3.6-15 */

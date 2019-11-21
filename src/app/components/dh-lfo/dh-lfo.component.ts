@@ -9,6 +9,11 @@ import { Component, OnInit, Output, EventEmitter, Input, ViewChild, AfterViewIni
 // tslint:disable-next-line:class-name
 export class dhLfoComponent implements AfterViewInit {
 
+  @Input() ttLfoOsc: string;
+  @Input() ttLfoSrc: string;
+  @Input() ttLfoDepth: number;
+  @Input() ttLfoRate: number;
+
   @Input() lfoOsc = 1;
   @Input() lfoSource = 0;
   @Input() lfoDepth = 0;
@@ -60,18 +65,45 @@ export class dhLfoComponent implements AfterViewInit {
   ngAfterViewInit(): void {}
 
   changeLfoOsc(e: any): void {
+    switch (e.args.value) {
+      case 0:
+        this.ttLfoOsc = 'Sine';
+        break;
+      case 1:
+        this.ttLfoOsc = 'Saw';
+        break;
+      case 2:
+        this.ttLfoOsc = 'Square';
+        break;
+      case 3:
+        this.ttLfoOsc = 'Triangle';
+        break;
+    }
     this.lfoOscChange.emit(e.args.value);
   }
 
   changeLfoSource(e: any): void {
+    switch (e.args.value) {
+      case 0:
+        this.ttLfoSrc = 'Gain';
+        break;
+      case 1:
+        this.ttLfoSrc = 'Tune';
+        break;
+      case 2:
+        this.ttLfoSrc = 'Filter';
+        break;
+    }
     this.lfoSourceChange.emit(parseFloat(e.args.value));
   }
 
   changeLfoDepth(e: any): void {
+    this.ttLfoDepth = Math.round(e.args.value);
     this.lfoDepthChange.emit(e.args.value);
   }
 
   changeLfoRate(e: any): void {
+    this.ttLfoRate = e.args.value;
     this.lfoRateChange.emit(e.args.value);
   }
 

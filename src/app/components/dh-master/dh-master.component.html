@@ -6,19 +6,23 @@
 
 <div class="control">
     <div class="label">Volume</div>
-    <jqxKnob [value]="volume" (onChange)="changeVolume($event)" [min]="0" [max]="1" [step]="0.01" [startAngle]="120"
-        [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="80" [height]="80" [marks]="marks"
-        [labels]="labels" [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120"
-        [dragEndAngle]="420">
-    </jqxKnob>
+    <jqxTooltip [position]="'bottom'" [name]="'tt'" [content]="ttVolume">
+        <jqxKnob [value]="volume" (onChange)="changeVolume($event)" [min]="0" [max]="1" [step]="0.01" [startAngle]="120"
+            [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="80" [height]="80" [marks]="marks"
+            [labels]="labels" [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120"
+            [dragEndAngle]="420">
+        </jqxKnob>
+    </jqxTooltip>
 </div>
 
 <div class="control">
     <div class="label">Panning</div>
-    <jqxKnob [value]="panning" (onChange)="changePanning($event)" [min]="-1" [max]="1" [step]="0.1" [startAngle]="120"
-        [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="80" [height]="80" [labels]="labels"
-        [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120" [dragEndAngle]="420">
-    </jqxKnob>
+    <jqxTooltip [position]="'bottom'" [name]="'tt'" [content]="ttPanning">
+        <jqxKnob [value]="panning" (onChange)="changePanning($event)" [min]="-1" [max]="1" [step]="0.01" [startAngle]="120"
+            [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="80" [height]="80" [labels]="labels"
+            [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120" [dragEndAngle]="420">
+        </jqxKnob>
+    </jqxTooltip>
 </div>
 
 <div class="control">

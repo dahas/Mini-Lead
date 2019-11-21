@@ -7,36 +7,43 @@
   <div class="controls">
     <div class="control">
       <div class="label">OSC</div>
-      <jqxKnob (onChange)="changeLfoOsc($event)" [value]="lfoOsc" [min]="0" [max]="3" [step]="1" [startAngle]="120"
-        [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40" [marks]="marks"
-        [labels]="labelsWave" [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="180"
-        [dragEndAngle]="360">
-      </jqxKnob>
+      <jqxTooltip [position]="'bottom'" [name]="'tt'" [content]="ttLfoOsc">
+        <jqxKnob (onChange)="changeLfoOsc($event)" [value]="lfoOsc" [min]="0" [max]="3" [step]="1" [startAngle]="120"
+          [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40" [marks]="marks"
+          [labels]="labelsWave" [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="180"
+          [dragEndAngle]="360">
+        </jqxKnob>
+      </jqxTooltip>
     </div>
     <div class="control">
       <div class="label">Depth</div>
-      <jqxKnob (onChange)="changeLfoDepth($event)" [value]="lfoDepth" [min]="0" [max]="1" [step]="0.01"
-        [startAngle]="120" [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40"
-        [marks]="marksLfoDp" [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120"
-        [dragEndAngle]="420">
-      </jqxKnob>
+      <jqxTooltip [position]="'bottom'" [name]="'tt'" [content]="ttLfoDepth">
+        <jqxKnob (onChange)="changeLfoDepth($event)" [value]="lfoDepth" [min]="0" [max]="1" [step]="0.01"
+          [startAngle]="120" [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40"
+          [marks]="marksLfoDp" [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120"
+          [dragEndAngle]="420">
+        </jqxKnob>
+      </jqxTooltip>
     </div>
   </div>
   <div class="controls">
     <div class="control">
-      <div class="label">Src</div>
-      <jqxKnob (onChange)="changeLfoSource($event)" [value]="lfoSource" [min]="0" [max]="2" [step]="1"
-        [startAngle]="120" [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40"
-        [marks]="marks" [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="180"
-        [dragEndAngle]="360">
-      </jqxKnob>
+      <div class="label">Src</div><jqxTooltip [position]="'bottom'" [name]="'tt'" [content]="ttLfoSrc">
+        <jqxKnob (onChange)="changeLfoSource($event)" [value]="lfoSource" [min]="0" [max]="2" [step]="1"
+          [startAngle]="120" [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40"
+          [marks]="marks" [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="180"
+          [dragEndAngle]="360">
+        </jqxKnob>
+      </jqxTooltip>
     </div>
     <div class="control">
       <div class="label">Rate</div>
-      <jqxKnob (onChange)="changeLfoRate($event)" [value]="lfoRate" [min]="0" [max]="20" [step]="1" [startAngle]="120"
-        [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40" [marks]="marksLfoRt"
-        [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120" [dragEndAngle]="420">
-      </jqxKnob>
+      <jqxTooltip [position]="'bottom'" [name]="'tt'" [content]="ttLfoRate">
+        <jqxKnob (onChange)="changeLfoRate($event)" [value]="lfoRate" [min]="0" [max]="20" [step]="1" [startAngle]="120"
+          [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40" [marks]="marksLfoRt"
+          [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120" [dragEndAngle]="420">
+        </jqxKnob>
+      </jqxTooltip>
     </div>
   </div>
 </div>

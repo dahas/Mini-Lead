@@ -2,7 +2,7 @@
 
   <div class="oscillators">
       <div class="master shadow round-corners">
-          <dhMaster [volume]="defMasterVolume" [panning]="defMasterPan" [poly]="defMasterPoly"
+          <dhMaster [ttVolume]="ttVolume" [ttPanning]="ttPanning" [volume]="defMasterVolume" [panning]="defMasterPan" [poly]="defMasterPoly"
             (volumeChange)="setMasterVolume($event)" (panningChange)="setMasterPan($event)"
             (modeChange)="setMasterPolyMode($event)"></dhMaster>
         </div>
@@ -13,21 +13,21 @@
 
   <div class="oscillators">
     <div class="osc shadow round-corners">
-      <dhOscillator [osc]="defVcoOsc" [attack]="defVcoEnvAttack" [decay]="defVcoEnvDecay" [sustain]="defVcoEnvSustain"
+      <dhOscillator [ttVcoOsc]="ttVcoOsc" [osc]="defVcoOsc" [attack]="defVcoEnvAttack" [decay]="defVcoEnvDecay" [sustain]="defVcoEnvSustain"
         [release]="defVcoEnvRelease" (oscChange)="setVcoOsc($event)" (lfoSourceChange)="setLfoSource($event)"
         (lfoDepthChange)="setLfoDepth($event)" (lfoRateChange)="setLfoRate($event)"
         (attackChange)="setVcoEnvAttack($event)" (decayChange)="setVcoEnvDecay($event)"
         (sustainChange)="setVcoEnvSustain($event)" (releaseChange)="setVcoEnvRelease($event)"></dhOscillator>
     </div>
     <div class="osc shadow round-corners">
-      <dhFilter [cutoff]="defVcfCutoff" [resonance]="defVcfResonance" [filter]="defVcfFilter" [attack]="defVcfEnvAttack"
+      <dhFilter [ttVcfCutoff]="ttVcfCutoff" [ttVcfFilter]="ttVcfFilter" [ttVcfRes]="ttVcfRes" [cutoff]="defVcfCutoff" [resonance]="defVcfResonance" [filter]="defVcfFilter" [attack]="defVcfEnvAttack"
         [decay]="defVcfEnvDecay" [sustain]="defVcfEnvSustain" [release]="defVcfEnvRelease"
         (cutoffChange)="setVcfCutoff($event)" (resChange)="setVcfRes($event)" (filterChange)="setVcfFilter($event)"
         (attackChange)="setVcfEnvAttack($event)" (decayChange)="setVcfEnvDecay($event)"
         (sustainChange)="setVcfEnvSustain($event)" (releaseChange)="setVcfEnvRelease($event)"></dhFilter>
     </div>
     <div class="osc shadow round-corners">
-      <dhLfo [lfoOsc]="defLfoOsc" [lfoSource]="defLfoSource" [lfoDepth]="defLfoDepth" [lfoRate]="defLfoRate"
+      <dhLfo [ttLfoOsc]="ttLfoOsc" [ttLfoSrc]="ttLfoSrc" [ttLfoDepth]="ttLfoDepth" [ttLfoRate]="ttLfoRate" [lfoOsc]="defLfoOsc" [lfoSource]="defLfoSource" [lfoDepth]="defLfoDepth" [lfoRate]="defLfoRate"
         (lfoOscChange)="setLfoOsc($event)" (lfoSourceChange)="setLfoSource($event)"
         (lfoDepthChange)="setLfoDepth($event)" (lfoRateChange)="setLfoRate($event)"></dhLfo>
     </div>

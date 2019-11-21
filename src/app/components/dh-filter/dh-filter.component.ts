@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { jqxSliderComponent } from 'jqwidgets-ng/jqxslider';
+import { jqxTooltipComponent } from 'jqwidgets-ng/jqxtooltip/public_api';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -10,11 +11,19 @@ import { jqxSliderComponent } from 'jqwidgets-ng/jqxslider';
 // tslint:disable-next-line:class-name
 export class dhFilterComponent implements AfterViewInit {
 
+  @ViewChild('tooltipAttack', null) tooltipAttack: jqxTooltipComponent;
+  @ViewChild('tooltipDecay', null) tooltipDecay: jqxTooltipComponent;
+  @ViewChild('tooltipSustain', null) tooltipSustain: jqxTooltipComponent;
+  @ViewChild('tooltipRelease', null) tooltipRelease: jqxTooltipComponent;
+
   @ViewChild('sliderAttack', null) sliderAttack: jqxSliderComponent;
   @ViewChild('sliderDecay', null) sliderDecay: jqxSliderComponent;
   @ViewChild('sliderSustain', null) sliderSustain: jqxSliderComponent;
   @ViewChild('sliderRelease', null) sliderRelease: jqxSliderComponent;
 
+  @Input() ttVcfFilter: string;
+  @Input() ttVcfCutoff: string;
+  @Input() ttVcfRes: number;
   @Input() filter = 0;
   @Input() cutoff = 1;
   @Input() resonance = 0;
@@ -31,7 +40,14 @@ export class dhFilterComponent implements AfterViewInit {
   @Output() sustainChange = new EventEmitter<number>();
   @Output() releaseChange = new EventEmitter<number>();
 
-  marksFilter: any = {
+  public viewInitialized = false;
+
+  public ttVcfAttack: string;
+  public ttVcfDecay: string;
+  public ttVcfSustain: string;
+  public ttVcfRelease: string;
+
+  public marksFilter: any = {
     colorRemaining: 'orange',
     colorProgress: 'orange',
     offset: '85%',
@@ -42,7 +58,7 @@ export class dhFilterComponent implements AfterViewInit {
     minorInterval: 1
   };
 
-  marksCutoff: any = {
+  public marksCutoff: any = {
     colorRemaining: '#555',
     colorProgress: 'orange',
     offset: '85%',
@@ -53,7 +69,7 @@ export class dhFilterComponent implements AfterViewInit {
     minorInterval: 200
   };
 
-  marksRes: any = {
+  public marksRes: any = {
     colorRemaining: '#555',
     colorProgress: 'orange',
     offset: '85%',
@@ -64,17 +80,17 @@ export class dhFilterComponent implements AfterViewInit {
     minorInterval: 1
   };
 
-  pointer: any = {
+  public pointer: any = {
     type: 'arrow', thickness: 3,
     style: { fill: '#ff6126' },
     size: '60%', offset: '50%'
   };
-  spinner: any = {
+  public spinner: any = {
     style: { fill: '#17a25d', stroke: '#666' },
     innerRadius: '65%', // specifies the inner Radius of the dial
     outerRadius: '70%', // specifies the outer Radius of the dial
   };
-  dial: any = {
+  public dial: any = {
     style: { fill: { color: '#a7a7a7', gradientType: 'linear', gradientStops: [[0, 1], [50, 0.5], [100, 1]] }, stroke: '#117B46' },
     innerRadius: '0%', // specifies the inner Radius of the dial
     outerRadius: '50%' // specifies the outer Radius of the dial
@@ -89,33 +105,68 @@ export class dhFilterComponent implements AfterViewInit {
     this.sliderDecay.setValue(this.decay * 100);
     this.sliderSustain.setValue(this.sustain * 100);
     this.sliderRelease.setValue(this.release * 100);
+
+    this.tooltipAttack.content(Math.round(this.attack * 100) + ' ms');
+    this.tooltipDecay.content(Math.round(this.decay * 100) + ' ms');
+    this.tooltipSustain.content(Math.round(this.sustain * 100) + ' %');
+    this.tooltipRelease.content(Math.round(this.release * 100) + ' ms');
+
+    this.viewInitialized = true;
   }
 
   changeCutoff(e: any): void {
+    this.ttVcfCutoff = Math.round(e.args.value) + ' hz';
     this.cutoffChange.emit(e.args.value);
   }
 
   changeFilter(e: any): void {
+    switch (e.args.value) {
+      case 0:
+        this.ttVcfFilter = 'Lowpass';
+        break;
+      case 1:
+        this.ttVcfFilter = 'Highpass';
+        break;
+      case 2:
+        this.ttVcfFilter = 'Bandpass';
+        break;
+      case 3:
+        this.ttVcfFilter = 'Lowshelf';
+        break;
+    }
     this.filterChange.emit(parseFloat(e.args.value));
   }
 
   changeRes(e: any): void {
+    this.ttVcfRes = e.args.value;
     this.resChange.emit(parseFloat(e.args.value));
   }
 
   changeAttack(e: any): void {
+    if (this.viewInitialized) {
+      this.ttVcfAttack = e.args.value + ' ms';
+    }
     this.attackChange.emit(parseFloat(e.args.value) / 100);
   }
 
   changeDecay(e: any): void {
+    if (this.viewInitialized) {
+      this.ttVcfDecay = e.args.value + ' ms';
+    }
     this.decayChange.emit(parseFloat(e.args.value) / 100);
   }
 
   changeSustain(e: any): void {
+    if (this.viewInitialized) {
+      this.ttVcfSustain = e.args.value + ' %';
+    }
     this.sustainChange.emit(parseFloat(e.args.value) / 100);
   }
 
   changeRelease(e: any): void {
+    if (this.viewInitialized) {
+      this.ttVcfRelease = e.args.value + ' ms';
+    }
     this.releaseChange.emit(parseFloat(e.args.value) / 100);
   }
 
