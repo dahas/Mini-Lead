@@ -44,7 +44,6 @@ export class dhKeyboardComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.range);
     this.range.nativeElement.scrollLeft = 627;
   }
 

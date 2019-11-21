@@ -5,36 +5,62 @@ export class AudioComponent implements OnInit {
 
   public audioCtx: any;
 
+  public preset: any;
+
   public panMaster: any;
   public gainMaster: any;
   public analyser: any;
 
-  public defMasterVolume = 0.5;
-  public defMasterPan = 0;
-  public defMasterPoly = true;
+  public defMasterVolume: number;
+  public defMasterPan: number;
+  public defMasterPoly: boolean;
 
-  public defVcoWave = 1; // Sawtooth
+  public defVcoOsc: number;
   public defVcoGain = 1;
-  public defVcoEnvAttack = 0;
-  public defVcoEnvDecay = 0;
-  public defVcoEnvSustain = 1;
-  public defVcoEnvRelease = 0.4;
+  public defVcoEnvAttack: number;
+  public defVcoEnvDecay: number;
+  public defVcoEnvSustain: number;
+  public defVcoEnvRelease: number;
 
-  public defVcfFilter = 0; // Lowpass
-  public defVcfCutoff = 3000;
-  public defVcfResonance = 15;
-  public defVcfEnvAttack = 0;
-  public defVcfEnvDecay = 0;
-  public defVcfEnvSustain = 1;
-  public defVcfEnvRelease = 0.8;
+  public defVcfFilter: number;
+  public defVcfCutoff: number;
+  public defVcfResonance: number;
+  public defVcfEnvAttack: number;
+  public defVcfEnvDecay: number;
+  public defVcfEnvSustain: number;
+  public defVcfEnvRelease: number;
 
-  public defLfoOsc = 0; // Sine
-  public defLfoSource = 0; // 0=VCA (gain), 1=VCO (tune), 2=VCF (filter)
-  public defLfoDepth = 0.1;
-  public defLfoRate = 4;
+  public defLfoOsc: number;
+  public defLfoSource: number;
+  public defLfoDepth: number;
+  public defLfoRate: number;
 
   constructor() {
+    this.preset = JSON.parse(localStorage.getItem('preset')) || {};
     this.audioCtx = new AudioContext();
+
+    this.defMasterVolume = typeof this.preset.volume === 'undefined' ? 0.5 : this.preset.volume;
+    this.defMasterPan = typeof this.preset.panning === 'undefined' ? 0 : this.preset.panning;
+    this.defMasterPoly = typeof this.preset.poly === 'undefined' ? true : this.preset.poly;
+
+    this.defVcoOsc = typeof this.preset.vcoOsc === 'undefined' ? 1 : this.preset.vcoOsc;
+    this.defVcoEnvAttack = typeof this.preset.vcoAttack === 'undefined' ? 0 : this.preset.vcoAttack;
+    this.defVcoEnvDecay = typeof this.preset.vcoDecay === 'undefined' ? 0 : this.preset.vcoDecay;
+    this.defVcoEnvSustain = typeof this.preset.vcoSustain === 'undefined' ? 1 : this.preset.vcoSustain;
+    this.defVcoEnvRelease = typeof this.preset.vcoRelease === 'undefined' ? 0.4 : this.preset.vcoRelease;
+
+    this.defVcfFilter = typeof this.preset.vcfFilter === 'undefined' ? 0 : this.preset.vcfFilter;
+    this.defVcfCutoff = typeof this.preset.vcfCutoff === 'undefined' ? 3000 : this.preset.vcfCutoff;
+    this.defVcfResonance = typeof this.preset.vcfResonance === 'undefined' ? 15 : this.preset.vcfResonance;
+    this.defVcfEnvAttack = typeof this.preset.vcfAttack === 'undefined' ? 0 : this.preset.vcfAttack;
+    this.defVcfEnvDecay = typeof this.preset.vcfDecay === 'undefined' ? 0 : this.preset.vcfDecay;
+    this.defVcfEnvSustain = typeof this.preset.vcfSustain === 'undefined' ? 1 : this.preset.vcfSustain;
+    this.defVcfEnvRelease = typeof this.preset.vcfRelease === 'undefined' ? 0.8 : this.preset.vcfRelease;
+
+    this.defLfoOsc = typeof this.preset.lfoOsc === 'undefined' ? 0 : this.preset.lfoOsc;
+    this.defLfoSource = typeof this.preset.lfoSrc === 'undefined' ? 0 : this.preset.lfoSrc;
+    this.defLfoDepth = typeof this.preset.lfoDepth === 'undefined' ? 0.1 : this.preset.lfoDepth;
+    this.defLfoRate = typeof this.preset.lfoRate === 'undefined' ? 4 : this.preset.lfoRate;
   }
 
   ngOnInit(): void {
@@ -53,6 +79,11 @@ export class AudioComponent implements OnInit {
 
   createVco(hz: number) {
     return new VCO(this, hz);
+  }
+
+  storeSetting(key: string, value: any) {
+    this.preset[key] = value;
+    localStorage.setItem('preset', JSON.stringify(this.preset));
   }
 }
 
@@ -152,7 +183,7 @@ class VCO {
 
   private createOscillator(t: number) {
     const osc = this.context.audioCtx.createOscillator();
-    osc.type = this.waveforms[this.context.defVcoWave];
+    osc.type = this.waveforms[this.context.defVcoOsc];
     osc.frequency.setValueAtTime(this.hz, t);
     return osc;
   }

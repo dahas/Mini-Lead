@@ -13,8 +13,8 @@
 
   <div class="oscillators">
     <div class="osc shadow round-corners">
-      <dhOscillator [osc]="defVcoWave" [attack]="defVcoEnvAttack" [decay]="defVcoEnvDecay" [sustain]="defVcoEnvSustain"
-        [release]="defVcoEnvRelease" (oscChange)="setVcoWave($event)" (lfoSourceChange)="setLfoSource($event)"
+      <dhOscillator [osc]="defVcoOsc" [attack]="defVcoEnvAttack" [decay]="defVcoEnvDecay" [sustain]="defVcoEnvSustain"
+        [release]="defVcoEnvRelease" (oscChange)="setVcoOsc($event)" (lfoSourceChange)="setLfoSource($event)"
         (lfoDepthChange)="setLfoDepth($event)" (lfoRateChange)="setLfoRate($event)"
         (attackChange)="setVcoEnvAttack($event)" (decayChange)="setVcoEnvDecay($event)"
         (sustainChange)="setVcoEnvSustain($event)" (releaseChange)="setVcoEnvRelease($event)"></dhOscillator>
