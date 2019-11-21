@@ -7,7 +7,7 @@
   <div class="controls">
     <div class="control">
       <div class="label">Cutoff</div>
-      <jqxKnob (onChange)="changeCutoff($event)" [value]="cutoff" [min]="0" [max]="10000" [step]="1" [startAngle]="120"
+      <jqxKnob (onChange)="changeCutoff($event)" [value]="cutoff" [min]="50" [max]="10000" [step]="1" [startAngle]="120"
         [endAngle]="480" [snapToStep]="false" [rotation]="'clockwise'" [width]="40" [height]="40" [marks]="marksCutoff"
         [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120" [dragEndAngle]="420">
       </jqxKnob>

@@ -21,17 +21,17 @@ export class AudioComponent implements OnInit {
   public defVcoEnvRelease = 0.4;
 
   public defVcfFilter = 0; // Lowpass
-  public defVcfCutoff = 10000;
-  public defVcfResonance = 0;
+  public defVcfCutoff = 3000;
+  public defVcfResonance = 15;
   public defVcfEnvAttack = 0;
   public defVcfEnvDecay = 0;
   public defVcfEnvSustain = 1;
-  public defVcfEnvRelease = 0;
+  public defVcfEnvRelease = 0.8;
 
   public defLfoOsc = 0; // Sine
-  public defLfoSource = 2; // 0=VCA (gain), 1=VCO (tune), 2=VCF (filter)
-  public defLfoDepth = 0.5;
-  public defLfoRate = 3;
+  public defLfoSource = 0; // 0=VCA (gain), 1=VCO (tune), 2=VCF (filter)
+  public defLfoDepth = 0.1;
+  public defLfoRate = 4;
 
   constructor() {
     this.audioCtx = new AudioContext();
