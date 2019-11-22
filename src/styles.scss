@@ -6,11 +6,17 @@ html,
 body {
   padding: 0;
   margin: 0;
-  height: 100%;
 }
 
 body {
   -webkit-app-region: drag;
+  padding: 15px 0 0 15px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .shadow {
@@ -31,11 +37,13 @@ body {
   flex-direction: column;
   color: #fff;
   background: #444;
-  // border: 8px solid rgb(0, 0, 0);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0 $space;
+  -webkit-box-shadow: $distance $distance 13px 0px rgba(0, 0, 0, 0.781);
+  -moz-box-shadow: $distance $distance 13px 0px rgb(0, 0, 0, 0.781);
+  box-shadow: $distance $distance 13px 0px rgb(0, 0, 0, 0.781);
 }
 
 .master {
@@ -66,12 +74,6 @@ body {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: #333;
   font-size: 36px;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .oscillators {
@@ -166,14 +168,14 @@ jqx-tooltip-text {
 
 .quit-button {
   padding: 0 15px;
-  margin: 0;
+  margin: 5px 0 0 3px;
   border: 0;
-  font-size: 7px;
+  font-size: 9px;
   font-weight: bold;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: rgb(117, 43, 0);
-  border-radius: 3px;
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#feccb1+0,f17432+35,ea5507+51,fb955e+100 */
+  border-radius: 4px;
+  border: 1px solid rgb(88, 41, 3);
   background: #fb955e; /* Old browsers */
   background: -moz-linear-gradient(top, #feccb1 0%, #f17432 35%, #ea5507 51%, #fb955e 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(
@@ -218,12 +220,6 @@ jqx-tooltip-text {
   font-size: 11px;
   font-weight: normal;
   color: #aaa;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 
   a {
     color: #aaa;
