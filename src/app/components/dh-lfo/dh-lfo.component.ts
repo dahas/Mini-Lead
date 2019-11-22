@@ -11,7 +11,7 @@ export class dhLfoComponent implements AfterViewInit {
 
   @Input() ttLfoOsc: string;
   @Input() ttLfoSrc: string;
-  @Input() ttLfoDepth: number;
+  @Input() ttLfoDepth: string;
   @Input() ttLfoRate: number;
 
   @Input() lfoOsc = 1;
@@ -52,12 +52,12 @@ export class dhLfoComponent implements AfterViewInit {
     size: '60%', offset: '50%'
   };
   spinner: any = {
-    style: { fill: '#17a25d', stroke: '#666' },
+    style: { fill: '#17a25d', stroke: '#999' },
     innerRadius: '65%', // specifies the inner Radius of the dial
     outerRadius: '70%', // specifies the outer Radius of the dial
   };
   dial: any = {
-    style: { fill: { color: '#a7a7a7', gradientType: 'linear', gradientStops: [[0, 1], [50, 0.5], [100, 1]] }, stroke: '#117B46' },
+    style: { fill: { color: '#dddddd', gradientType: 'linear', gradientStops: [[0, 1], [50, 0.5], [100, 1]] }, stroke: '#666' },
     innerRadius: '0%', // specifies the inner Radius of the dial
     outerRadius: '50%' // specifies the outer Radius of the dial
   };
@@ -98,7 +98,7 @@ export class dhLfoComponent implements AfterViewInit {
   }
 
   changeLfoDepth(e: any): void {
-    this.ttLfoDepth = Math.round(e.args.value);
+    this.ttLfoDepth = Math.round(e.args.value * 100) + ' %';
     this.lfoDepthChange.emit(e.args.value);
   }
 

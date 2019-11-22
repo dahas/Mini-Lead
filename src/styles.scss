@@ -26,7 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   color: #fff;
-  background: #555;
+  background: #444;
   // border: 8px solid rgb(0, 0, 0);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -38,7 +38,7 @@ body {
   float: left;
   align-items: center;
   width: 280px;
-  background: #333;
+  background: #222;
   height: 120px;
   margin: $space 0 0 0;
 }
@@ -48,7 +48,7 @@ body {
   float: left;
   align-items: center;
   width: 528px;
-  background: #333;
+  background: #222;
   height: 120px;
   margin: $space 0 0 $space;
   overflow: hidden;
@@ -60,7 +60,7 @@ body {
   writing-mode: tb-rl;
   transform: rotate(-180deg);
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  color: #444;
+  color: #333;
   font-size: 36px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -77,7 +77,7 @@ body {
     float: left;
     width: 340px;
     margin: $space 0 0 $space;
-    background: #333;
+    background: #222;
   }
   .osc:first-child {
     width: 280px;
@@ -132,8 +132,8 @@ jqx-tooltip-text {
 }
 
 .jqx-fill-state-normal-dh {
-  border-color: #333 !important;
-  background: #555; /* Old browsers */
+  border-color: #111 !important;
+  background: #444; /* Old browsers */
   background: -moz-linear-gradient(top, #aebcbf 0%, #6e7774 0%, #0a0e0a 99%, #0a0809 100%) !important; /* FF3.6-15 */
   background: -webkit-linear-gradient(
     top,
@@ -159,6 +159,12 @@ jqx-tooltip-text {
   font-size: 11px;
   font-weight: normal;
   color: #aaa;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   a {
     color: #aaa;

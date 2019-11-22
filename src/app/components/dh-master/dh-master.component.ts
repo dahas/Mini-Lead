@@ -17,7 +17,6 @@ export class dhMasterComponent {
 
   @Output() volumeChange = new EventEmitter<number>();
   @Output() panningChange = new EventEmitter<number>();
-  @Output() modeChange = new EventEmitter<boolean>();
 
   public marks: any = {
     colorRemaining: '#555',
@@ -51,12 +50,12 @@ export class dhMasterComponent {
     size: '60%', offset: '50%'
   };
   public spinner: any = {
-    style: { fill: '#17a25d', stroke: '#666' },
+    style: { fill: '#17a25d', stroke: '#999' },
     innerRadius: '65%', // specifies the inner Radius of the dial
     outerRadius: '70%', // specifies the outer Radius of the dial
   };
   public dial: any = {
-    style: { fill: { color: '#a7a7a7', gradientType: 'linear', gradientStops: [[0, 1], [50, 0.5], [100, 1]] }, stroke: '#117B46' },
+    style: { fill: { color: '#dddddd', gradientType: 'linear', gradientStops: [[0, 1], [50, 0.5], [100, 1]] }, stroke: '#666' },
     innerRadius: '0%', // specifies the inner Radius of the dial
     outerRadius: '50%' // specifies the outer Radius of the dial
   };
@@ -76,9 +75,5 @@ export class dhMasterComponent {
       this.ttPanning = 'Centered';
     }
     this.panningChange.emit(parseFloat(e.args.value));
-  }
-
-  changeMode(e: any): void {
-    this.modeChange.emit(e.args.checked);
   }
 }

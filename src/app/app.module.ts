@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { jqxKnobModule } from 'jqwidgets-ng/jqxknob';
-import { jqxSwitchButtonComponent } from 'jqwidgets-ng/jqxswitchbutton';
 import { jqxSliderComponent } from 'jqwidgets-ng/jqxslider';
 import { jqxTooltipComponent } from 'jqwidgets-ng/jqxtooltip';
 
@@ -18,7 +17,6 @@ import { dhOscilloscopeComponent } from './components/dh-oscilloscope/dh-oscillo
 @NgModule({
   declarations: [
     AppComponent,
-    jqxSwitchButtonComponent,
     jqxSliderComponent,
     jqxTooltipComponent,
     dhMasterComponent,

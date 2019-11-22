@@ -2,7 +2,7 @@
 
   <div class="oscillators">
       <div class="master shadow round-corners">
-          <dhMaster [ttVolume]="ttVolume" [ttPanning]="ttPanning" [volume]="defMasterVolume" [panning]="defMasterPan" [poly]="defMasterPoly"
+          <dhMaster [ttVolume]="ttVolume" [ttPanning]="ttPanning" [volume]="defMasterVolume" [panning]="defMasterPan"
             (volumeChange)="setMasterVolume($event)" (panningChange)="setMasterPan($event)"
             (modeChange)="setMasterPolyMode($event)"></dhMaster>
         </div>
@@ -36,5 +36,5 @@
   <div class="keyboard round-corners">
     <dhKeyboard [fadeOut]="fadeOut" (touch)="keyOn($event)" (release)="keyOff($event)"></dhKeyboard>
   </div>
-  <div class="copyright">&copy; Copyright 2019 Martin J. Wolf [<a href="http://www.martinwolf.info" target="_blank">www.martinwolf.info</a>]</div>
+  <div class="copyright">&copy; 2019 <a href="http://www.martinwolf.info" target="_blank">Martin J. Wolf</a>. All rights reserved.</div>
 </div>

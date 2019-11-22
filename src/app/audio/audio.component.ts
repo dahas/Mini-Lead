@@ -13,7 +13,6 @@ export class AudioComponent implements OnInit {
 
   public defMasterVolume: number;
   public defMasterPan: number;
-  public defMasterPoly: boolean;
 
   public defVcoOsc: number;
   public defVcoGain = 1;
@@ -41,7 +40,6 @@ export class AudioComponent implements OnInit {
 
     this.defMasterVolume = typeof this.preset.volume === 'undefined' ? 0.5 : this.preset.volume;
     this.defMasterPan = typeof this.preset.panning === 'undefined' ? 0 : this.preset.panning;
-    this.defMasterPoly = typeof this.preset.poly === 'undefined' ? true : this.preset.poly;
 
     this.defVcoOsc = typeof this.preset.vcoOsc === 'undefined' ? 1 : this.preset.vcoOsc;
     this.defVcoEnvAttack = typeof this.preset.vcoAttack === 'undefined' ? 0 : this.preset.vcoAttack;

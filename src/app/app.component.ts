@@ -22,7 +22,7 @@ export class AppComponent extends AudioComponent {
 
   public ttLfoOsc: string;
   public ttLfoSrc: string;
-  public ttLfoDepth: number;
+  public ttLfoDepth: string;
   public ttLfoRate: number;
 
   constructor() {
@@ -97,7 +97,7 @@ export class AppComponent extends AudioComponent {
         this.ttLfoSrc = 'Filter';
         break;
     }
-    this.ttLfoDepth = Math.round(this.defLfoDepth * 100);
+    this.ttLfoDepth = Math.round(this.defLfoDepth * 100) + ' %';
     this.ttLfoRate = this.defLfoRate;
   }
 
@@ -111,16 +111,9 @@ export class AppComponent extends AudioComponent {
   }
   setMasterPolyMode(p: boolean): void {
     this.storeSetting('poly', p);
-    this.defMasterPoly = p;
   }
 
   keyOn(e: any): void {
-    if (!this.defMasterPoly) {
-      Object.keys(this.vcos).forEach(note => {
-        this.vcos[note].stop();
-        delete this.vcos[note];
-      });
-    }
     const vco = this.createVco(e.hz);
     vco.start();
     this.vcos[e.note] = vco;
