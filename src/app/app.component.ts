@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { AudioComponent } from './audio/audio.component';
+import { ElectronService } from 'ngx-electron';
+// import { remote  } from 'electron';
+
+declare var require: any;
 
 @Component({
   selector: 'app-root',
@@ -25,7 +29,7 @@ export class AppComponent extends AudioComponent {
   public ttLfoDepth: string;
   public ttLfoRate: number;
 
-  constructor() {
+  constructor(private electronService: ElectronService) {
     super();
 
     this.fadeOut = 0.3;
@@ -99,6 +103,16 @@ export class AppComponent extends AudioComponent {
     }
     this.ttLfoDepth = Math.round(this.defLfoDepth * 100) + ' %';
     this.ttLfoRate = this.defLfoRate;
+  }
+
+  quit(ev: any) {
+    try {
+      const remote = this.electronService.remote;
+      const w = remote.getCurrentWindow();
+      w.close();
+    } catch (e) {
+
+    }
   }
 
   setMasterVolume(v: number): void {

@@ -7,7 +7,7 @@
   <div class="controls">
     <div class="control">
       <div class="label">Cutoff</div>
-      <jqxTooltip [position]="'bottom'" [name]="'tt'" [content]="ttVcfCutoff">
+      <jqxTooltip style="-webkit-app-region: no-drag" [position]="'bottom'" [name]="'tt'" [content]="ttVcfCutoff">
         <jqxKnob (onChange)="changeCutoff($event)" [value]="cutoff" [min]="50" [max]="10000" [step]="1" [startAngle]="120"
           [endAngle]="480" [snapToStep]="false" [rotation]="'clockwise'" [width]="40" [height]="40" [marks]="marksCutoff"
           [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120" [dragEndAngle]="420">
@@ -16,7 +16,7 @@
     </div>
     <div class="control">
       <div class="label">Filter</div>
-      <jqxTooltip [position]="'bottom'" [name]="'tt'" [content]="ttVcfFilter">
+      <jqxTooltip style="-webkit-app-region: no-drag" [position]="'bottom'" [name]="'tt'" [content]="ttVcfFilter">
         <jqxKnob (onChange)="changeFilter($event)" [value]="filter" [min]="0" [max]="3" [step]="1" [startAngle]="120"
           [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40" [marks]="marksFilter"
           [labels]="labelsWave" [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="180"
@@ -28,7 +28,7 @@
   <div class="controls">
     <div class="control">
       <div class="label">Res</div>
-      <jqxTooltip [position]="'bottom'" [name]="'tt'" [content]="ttVcfRes">
+      <jqxTooltip style="-webkit-app-region: no-drag" [position]="'bottom'" [name]="'tt'" [content]="ttVcfRes">
         <jqxKnob (onChange)="changeRes($event)" [value]="resonance" [min]="0" [max]="50" [step]="1" [startAngle]="120"
           [endAngle]="480" [snapToStep]="true" [rotation]="'clockwise'" [width]="40" [height]="40" [marks]="marksRes"
           [pointer]="pointer" [spinner]="spinner" [dial]="dial" [dragStartAngle]="120" [dragEndAngle]="420">
@@ -40,7 +40,7 @@
   <div class="controls">
     <div class="control adsr">
       <div class="label">A</div>
-      <jqxTooltip #tooltipAttack [position]="'top'" [name]="'tt'" [content]="ttVcfAttack">
+      <jqxTooltip style="-webkit-app-region: no-drag" #tooltipAttack [position]="'top'" [name]="'tt'" [content]="ttVcfAttack">
         <jqxSlider #sliderAttack [theme]="'dh'" (onChange)="changeAttack($event)" [showButtons]="false" 
         [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="250"
           [ticksFrequency]="25" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
@@ -51,7 +51,7 @@
   <div class="controls">
     <div class="control adsr">
       <div class="label">D</div>
-      <jqxTooltip #tooltipDecay [position]="'top'" [name]="'tt'" [content]="ttVcfDecay">
+      <jqxTooltip style="-webkit-app-region: no-drag" #tooltipDecay [position]="'top'" [name]="'tt'" [content]="ttVcfDecay">
         <jqxSlider #sliderDecay [theme]="'dh'" (onChange)="changeDecay($event)" [showButtons]="false" 
         [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="100"
           [ticksFrequency]="10" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
@@ -62,7 +62,7 @@
   <div class="controls">
     <div class="control adsr">
       <div class="label">S</div>
-      <jqxTooltip #tooltipSustain [position]="'top'" [name]="'tt'" [content]="ttVcfSustain">
+      <jqxTooltip style="-webkit-app-region: no-drag" #tooltipSustain [position]="'top'" [name]="'tt'" [content]="ttVcfSustain">
         <jqxSlider #sliderSustain [theme]="'dh'" (onChange)="changeSustain($event)" [showButtons]="false" 
         [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="100"
           [ticksFrequency]="10" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">
@@ -73,7 +73,7 @@
   <div class="controls">
     <div class="control adsr">
       <div class="label">R</div>
-      <jqxTooltip #tooltipRelease [position]="'top'" [name]="'tt'" [content]="ttVcfRelease">
+      <jqxTooltip style="-webkit-app-region: no-drag" #tooltipRelease [position]="'top'" [name]="'tt'" [content]="ttVcfRelease">
         <jqxSlider #sliderRelease [theme]="'dh'" (onChange)="changeRelease($event)" [showButtons]="false" 
         [height]="115" [width]="40" [orientation]="'vertical'" [min]="0" [max]="250"
           [ticksFrequency]="25" [tooltip]="false" [mode]="'fixed'" [tickSize]="4">

@@ -1,4 +1,4 @@
-<div class="synth">
+<div class="synth round-corners">
 
   <div class="oscillators">
       <div class="master shadow round-corners">
@@ -36,5 +36,10 @@
   <div class="keyboard round-corners">
     <dhKeyboard [fadeOut]="fadeOut" (touch)="keyOn($event)" (release)="keyOff($event)"></dhKeyboard>
   </div>
-  <div class="copyright">&copy; 2019 <a href="http://www.martinwolf.info" target="_blank">Martin J. Wolf</a>. All rights reserved.</div>
+  <div class="footer">
+    <div class="quit">
+      <button class="quit-button" style="-webkit-app-region: no-drag" (click)="quit($event)">X Quit</button>
+    </div>
+    <div class="copyright">&copy; 2019 <a href="http://www.martinwolf.info" target="_blank" style="-webkit-app-region: no-drag">Martin J. Wolf</a>. All rights reserved.</div>
+  </div>
 </div>

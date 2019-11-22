@@ -99,7 +99,6 @@ class VCO {
 
   constructor(protected context: AudioComponent, protected hz: number) { }
 
-
   public start(): void {
     const t = this.context.audioCtx.currentTime;
     this.vcoGain = this.createVcoGain(t);

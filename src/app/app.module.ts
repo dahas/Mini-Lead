@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { NgxElectronModule } from 'ngx-electron';
+
 import { AppComponent } from './app.component';
 
 import { jqxKnobModule } from 'jqwidgets-ng/jqxknob';
@@ -28,6 +30,7 @@ import { dhOscilloscopeComponent } from './components/dh-oscilloscope/dh-oscillo
   ],
   imports: [
     BrowserModule,
+    NgxElectronModule,
     jqxKnobModule
   ],
   providers: [],
