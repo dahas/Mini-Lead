@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AudioComponent } from './audio/audio.component';
 import { ElectronService } from 'ngx-electron';
-// import { remote  } from 'electron';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
 declare var require: any;
 
@@ -28,6 +28,8 @@ export class AppComponent extends AudioComponent {
   public ttLfoSrc: string;
   public ttLfoDepth: string;
   public ttLfoRate: number;
+
+  public iconPowerOff = faPowerOff;
 
   constructor(private electronService: ElectronService) {
     super();

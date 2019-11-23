@@ -16,6 +16,8 @@ import { dhFilterComponent } from './components/dh-filter/dh-filter.component';
 import { dhLfoComponent } from './components/dh-lfo/dh-lfo.component';
 import { dhOscilloscopeComponent } from './components/dh-oscilloscope/dh-oscilloscope.component';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,8 @@ import { dhOscilloscopeComponent } from './components/dh-oscilloscope/dh-oscillo
   imports: [
     BrowserModule,
     NgxElectronModule,
-    jqxKnobModule
+    jqxKnobModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

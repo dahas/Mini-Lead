@@ -4,24 +4,6 @@
   height: 120px !important;
 }
 
-.controls {
-  flex: 1;
-  padding-bottom: 10px;
-  width: 60px;
-}
-
-.control {
-  box-sizing: border-box;
-  text-align: center;
-  padding: 0 10px 5px 10px;
-
-  .label {
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    color: grey;
-    font-size: 12px;
-  }
-}
-
 .jqx-knob-label {
   fill: #eee !important;
   color: #eee !important;

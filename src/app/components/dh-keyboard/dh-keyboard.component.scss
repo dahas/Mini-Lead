@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-weight:300;
+  src: url(../../../assets/fonts/Roboto_Condensed/RobotoCondensed-Light.ttf) format("truetype");
+}
+
 .dh-keys {
   overflow: hidden;
   // overflow-x: auto;
@@ -29,7 +35,7 @@
 }
 .dh-key-white > div {
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto Condensed';
   color: #ccc;
   font-size: 12px;
   font-weight: bold;
@@ -43,14 +49,14 @@
 .dh-key-black {
   z-index: 100;
   position: relative;
-  width: 24px;
+  width: 20px;
   background: #000;
   display: flex;
   flex-direction: column;
   position: relative;
   height: 65%;
-  left: -13px;
-  margin-right: -24px;
+  left: -11px;
+  margin-right: -20px;
   -webkit-border-bottom-left-radius: 5px;
   -webkit-border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -58,14 +64,14 @@
 }
 .dh-key-black > div {
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto Condensed';
   color: #555;
   font-size: 12px;
   font-weight: bold;
   position: absolute;
   flex: 1;
   bottom: 7px;
-  left: 8px;
+  left: 6px;
   pointer-events: none;
 }
 
