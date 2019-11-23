@@ -12,6 +12,10 @@ The Mini-Lead synthesizer is a simple example to demonstarte a small part of wha
 
 Run `ng serve --open` to start the synth in the web browser.
 
+## View online
+
+https://mini-lead.web.app/
+
 ## Author
 
 Martin J. Wolf
