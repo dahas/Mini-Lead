@@ -25,12 +25,6 @@ body {
 body {
   -webkit-app-region: drag;
   padding: 15px 0 0 15px;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .shadow {
@@ -58,6 +52,12 @@ body {
   -webkit-box-shadow: $distance $distance 13px 0px rgba(0, 0, 0, 0.781);
   -moz-box-shadow: $distance $distance 13px 0px rgb(0, 0, 0, 0.781);
   box-shadow: $distance $distance 13px 0px rgb(0, 0, 0, 0.781);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .master {
@@ -263,5 +263,29 @@ jqx-tooltip-text {
   a {
     color: #aaa;
     text-decoration: none;
+  }
+}
+
+.info {
+  margin-top: 10px;
+  padding: 15px;
+  width: 834px;
+
+  p, h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+    font-size: 12px;
+    // color: #444;
+  }
+  h1 {
+    font-size: 26px;
+  }
+  p {
+    font-size: 18px;
+  }
+  a {
+    color: #53b2d1;
+    text-decoration: none;
+    border-bottom: 1px dotted #53b2d1;
   }
 }

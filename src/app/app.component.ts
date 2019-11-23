@@ -31,8 +31,12 @@ export class AppComponent extends AudioComponent {
 
   public iconPowerOff = faPowerOff;
 
+  public showInfo: boolean;
+
   constructor(private electronService: ElectronService) {
     super();
+
+    this.showInfo = this.electronService.remote ? false : true;
 
     this.fadeOut = 0.3;
 
