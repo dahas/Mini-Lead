@@ -23,7 +23,7 @@ $ cd Mini-Lead
 $ ng serve --open
 ```
 
-## View online
+## Play online
 
 https://mini-lead.web.app/
 
