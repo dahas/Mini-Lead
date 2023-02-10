@@ -1,4 +1,6 @@
-# Virtual Analog Synthesizer - built with Web Technologies
+# **Mini Lead** - Virtual Analog Synthesizer
+
+<img src="https://img.shields.io/badge/Angular-8-orange" /> <img src="https://img.shields.io/badge/Webix-UI-green" /> <img src="https://img.shields.io/badge/Web Audio-API-purple" /> <img src="https://img.shields.io/badge/NodeJS-14-yellow" /> <img src="https://img.shields.io/badge/HTML-5-blue" /> <img src="https://img.shields.io/badge/CSS-3-pink" />
 
 The Mini-Lead synthesizer is an example that demonstrates a small part of what is possible with JavaScript/TypeScript, HTML and CSS nowadays. It is built with the Angular framework and uses basic features of the Web Audio Api. It is not intended to work on all web browsers, but at least on Google Chrome. Use your keyboard or mouse pointer to play with it.
 
